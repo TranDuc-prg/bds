@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landmark Realty | 30+ Dự Án Bất Động Sản Cao Cấp</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landmark Realty - Hệ Thống Phân Phối BĐS Toàn Quốc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* --- RESET & GLOBAL STYLES --- */
         * {
@@ -13,218 +14,488 @@
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
         }
+        
+        :root {
+            --primary: #0f2b46;
+            --secondary: #c5a880;
+            --secondary-hover: #b3946a;
+            --light-bg: #f4f6f9;
+            --text-dark: #1a2332;
+            --text-gray: #6b7a8a;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
+            --border-radius: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --zalo-color: #0068ff;
+            --phone-color: #2ecc71;
+        }
+
         body {
-            color: #333;
-            line-height: 1.6;
-            background-color: #f4f6f9;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--light-bg);
         }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        ul {
-            list-style: none;
-        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
         .container {
             width: 90%;
             max-width: 1300px;
             margin: 0 auto;
+            padding: 0 15px;
         }
+
+        /* --- SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--light-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--secondary-hover); }
 
         /* --- HEADER & NAVIGATION --- */
         header {
             background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.95);
         }
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
+            padding: 15px 0;
         }
+
         .logo h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            color: #0f2b46;
+            color: var(--primary);
             letter-spacing: 1px;
         }
-        .logo span {
-            color: #c5a880;
-        }
+        .logo span { color: var(--secondary); }
+
         .nav-links {
             display: flex;
             align-items: center;
+            gap: 5px;
         }
-        .nav-links li {
-            margin-left: 30px;
-        }
+
+        .nav-links li { margin-left: 25px; }
+
         .nav-links a {
             font-weight: 600;
             font-size: 14px;
-            color: #0f2b46;
-            transition: color 0.3s;
+            color: var(--primary);
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
         }
-        .nav-links a:hover, .nav-links a.active {
-            color: #c5a880;
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
         }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
         .btn-contact-nav {
-            background-color: #0f2b46;
+            background: var(--primary);
             color: #fff !important;
-            padding: 10px 22px;
-            border-radius: 4px;
-            transition: background 0.3s;
+            padding: 10px 28px !important;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 600 !important;
         }
+
+        .btn-contact-nav::after { display: none !important; }
         .btn-contact-nav:hover {
-            background-color: #c5a880;
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(197, 168, 128, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(15, 43, 70, 0.75), rgba(15, 43, 70, 0.75)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            height: 55vh;
+            background: linear-gradient(135deg, rgba(15, 43, 70, 0.85), rgba(15, 43, 70, 0.7)),
+                        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: #fff;
-            padding: 0 20px;
-        }
-        .hero h2 {
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 35px;
-            font-weight: 300;
-            color: #e0e6ed;
+            padding: 60px 20px;
+            position: relative;
         }
 
-        /* BỘ LỌC TÌM KIẾM THỜI GIAN THỰC (REAL-TIME FILTER) */
-        .search-box {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
-            max-width: 1000px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr) auto;
-            gap: 15px;
+            height: 100px;
+            background: linear-gradient(to top, var(--light-bg), transparent);
         }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #d0d8e3;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .hero-stats .stat-item {
+            text-align: center;
+        }
+
+        .hero-stats .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--secondary);
+            display: block;
+        }
+
+        .hero-stats .stat-label {
+            font-size: 13px;
+            color: #b0c0d0;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* BỘ LỌC TÌM KIẾM NÂNG CAO */
+        .search-box {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr) auto;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .search-box .filter-group {
+            position: relative;
+        }
+
+        .search-box .filter-group::before {
+            content: '\f0ac';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 14px;
+            z-index: 1;
+        }
+
         .search-box select {
             width: 100%;
-            padding: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 14px 20px 14px 40px;
+            border: 2px solid #e8ecf2;
+            border-radius: 8px;
             font-size: 14px;
             outline: none;
-            background-color: #fff;
-            color: #333;
+            background: #f8f9fb;
+            transition: var(--transition);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7a8a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
         }
-        .search-box button {
-            background-color: #c5a880;
+
+        .search-box select:focus {
+            border-color: var(--secondary);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(197, 168, 128, 0.1);
+        }
+
+        .search-box select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .search-box .btn-search {
+            background: var(--secondary);
             color: #fff;
             border: none;
             padding: 0 35px;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             font-size: 15px;
-            transition: background 0.3s;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
         }
-        .search-box button:hover {
-            background-color: #0f2b46;
+
+        .search-box .btn-search:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 43, 70, 0.25);
         }
 
         /* --- PROPERTIES SECTION --- */
         .properties {
-            padding: 70px 0;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-        .section-title h2 {
-            font-size: 32px;
-            color: #0f2b46;
-            margin-bottom: 8px;
-        }
-        .section-title p {
-            color: #777;
-            font-size: 15px;
-            margin-bottom: 15px;
-        }
-        .section-title .bar {
-            width: 60px;
-            height: 3px;
-            background-color: #c5a880;
-            margin: 0 auto;
+            padding: 70px 0 80px;
+            position: relative;
+            z-index: 1;
+            margin-top: -50px;
         }
 
-        /* Số lượng tìm thấy */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-title h2 span {
+            color: var(--secondary);
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .section-title .bar {
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
         .results-count {
             font-size: 15px;
-            color: #555;
-            margin-bottom: 20px;
+            color: var(--text-gray);
             font-weight: 500;
         }
 
-        /* Grid hiển thị 30 sản phẩm */
+        .results-count strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 8px;
+        }
+
+        .view-options button {
+            padding: 8px 14px;
+            border: 2px solid #e8ecf2;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-gray);
+        }
+
+        .view-options button:hover,
+        .view-options button.active {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            background: rgba(197, 168, 128, 0.08);
+        }
+
+        /* Grid sản phẩm */
         .grid-properties {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
+
+        .grid-properties.grid-view {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-properties.grid-view .property-card {
+            flex-direction: row;
+        }
+
+        .grid-properties.grid-view .property-img {
+            height: auto;
+            width: 300px;
+            flex-shrink: 0;
+        }
+
         .property-card {
-            background-color: #fff;
-            border-radius: 8px;
+            background: #fff;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
+            border: 1px solid #f0f2f5;
         }
+
         .property-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--secondary);
         }
+
         .property-img {
             position: relative;
-            height: 240px;
+            height: 250px;
             overflow: hidden;
-            background-color: #e5e5e5;
+            background: #e8ecf2;
         }
+
         .property-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .property-card:hover .property-img img {
-            transform: scale(1.08);
+            transform: scale(1.1);
         }
+
         .badge {
             position: absolute;
             top: 15px;
             left: 15px;
             color: #fff;
-            padding: 5px 14px;
-            font-size: 12px;
+            padding: 5px 16px;
+            font-size: 11px;
             font-weight: 600;
-            border-radius: 4px;
+            border-radius: 50px;
             text-transform: uppercase;
             z-index: 2;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
-        .badge.open { background-color: #2ecc71; }
-        .badge.soon { background-color: #e67e22; }
-        .badge.hot { background-color: #e74c3c; }
-        .badge.rent { background-color: #3498db; }
+
+        .badge.open { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+        .badge.soon { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .badge.hot { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .badge.rent { background: linear-gradient(135deg, #3498db, #2980b9); }
+
+        .property-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .property-actions button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--primary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .property-actions button:hover {
+            background: var(--secondary);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .property-actions button.wishlisted {
+            background: #e74c3c;
+            color: #fff;
+        }
 
         .property-content {
             padding: 25px;
@@ -232,348 +503,1927 @@
             flex-direction: column;
             flex-grow: 1;
         }
+
         .price {
-            color: #c5a880;
-            font-size: 22px;
+            color: var(--secondary);
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
+
+        .price .price-unit {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-gray);
+        }
+
         .property-content h3 {
             font-size: 18px;
-            color: #0f2b46;
-            margin-bottom: 12px;
-            height: 54px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            height: 52px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-weight: 600;
+            line-height: 1.4;
         }
+
         .location {
-            color: #666;
+            color: var(--text-gray);
             font-size: 13.5px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            margin-bottom: 18px;
         }
+
+        .location i {
+            margin-right: 6px;
+            color: var(--secondary);
+        }
+
         .details {
             display: flex;
             justify-content: space-between;
             border-top: 1px solid #edf2f7;
             padding-top: 15px;
             font-size: 13px;
-            color: #555;
+            color: var(--text-gray);
             margin-top: auto;
+            flex-wrap: wrap;
+            gap: 8px;
         }
+
+        .details .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .details .detail-item i {
+            color: var(--secondary);
+        }
+
         .btn-view {
-            display: block;
-            text-align: center;
-            background-color: #0f2b46;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primary);
             color: #fff;
-            padding: 12px;
-            margin-top: 20px;
-            border-radius: 4px;
+            padding: 12px 20px;
+            margin-top: 18px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 14px;
-            transition: all 0.3s;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
         }
+
         .btn-view:hover {
-            background-color: #c5a880;
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(197, 168, 128, 0.3);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .pagination button {
+            padding: 10px 18px;
+            border: 2px solid #e8ecf2;
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .pagination button:hover,
+        .pagination button.active {
+            border-color: var(--secondary);
+            background: var(--secondary);
+            color: #fff;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         /* --- CONTACT SECTION --- */
         .contact-section {
-            background-color: #0f2b46;
+            background: var(--primary);
             color: #fff;
             padding: 80px 0;
+            position: relative;
+            overflow: hidden;
         }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(197, 168, 128, 0.05);
+            border-radius: 50%;
+        }
+
         .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
+
         .contact-info h2 {
-            font-size: 36px;
+            font-size: 38px;
             margin-bottom: 20px;
-            color: #fff;
+            font-weight: 700;
         }
+
+        .contact-info h2 span {
+            color: var(--secondary);
+        }
+
         .contact-info p {
             color: #a0b2c6;
             margin-bottom: 35px;
             font-size: 16px;
+            line-height: 1.8;
         }
+
         .info-item {
             margin-bottom: 20px;
-            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
+
+        .info-item .icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(197, 168, 128, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
         .info-item strong {
-            color: #c5a880;
-            display: inline-block;
-            width: 120px;
+            color: #fff;
+            display: block;
+            font-weight: 600;
         }
+
+        .info-item .text {
+            color: #a0b2c6;
+            font-size: 14px;
+        }
+
         .contact-form {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
+            background: #fff;
+            padding: 40px 45px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
+
         .contact-form h3 {
-            color: #0f2b46;
-            margin-bottom: 20px;
+            color: var(--primary);
+            margin-bottom: 8px;
             font-size: 22px;
         }
+
+        .contact-form .form-subtitle {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
         .form-group {
             margin-bottom: 18px;
         }
-        .form-group input, .form-group textarea {
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 14px;
-            border: 1px solid #dbdbdb;
-            border-radius: 4px;
+            padding: 14px 18px;
+            border: 2px solid #e8ecf2;
+            border-radius: 8px;
+            outline: none;
+            transition: var(--transition);
+            font-size: 14px;
+            background: #f8f9fb;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--secondary);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(197, 168, 128, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn-submit {
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 43, 70, 0.3);
+        }
+
+        /* --- MODAL NÂNG CAO --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: #fff;
+            width: 100%;
+            max-width: 1000px;
+            max-height: 92vh;
+            border-radius: var(--border-radius);
+            overflow-y: auto;
+            position: relative;
+            animation: modalIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-box::-webkit-scrollbar { width: 5px; }
+        .modal-box::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .modal-box::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+
+        .close-modal {
+            position: sticky;
+            top: 15px;
+            float: right;
+            right: 20px;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+            font-weight: 300;
+            width: 45px;
+            height: 45px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border: none;
+            margin: 15px 20px 0 0;
+        }
+
+        .close-modal:hover {
+            background: #e74c3c;
+            transform: rotate(90deg);
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 35px 40px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .modal-price {
+            color: var(--secondary);
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .modal-price .price-detail {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-gray);
+        }
+
+        .modal-badge {
+            padding: 6px 18px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .modal-badge.open { background: #2ecc71; }
+        .modal-badge.soon { background: #f39c12; }
+        .modal-badge.hot { background: #e74c3c; }
+        .modal-badge.rent { background: #3498db; }
+
+        .modal-title {
+            font-size: 26px;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .modal-location {
+            color: var(--text-gray);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            background: #f8f9fb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .modal-meta-grid .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 4px;
+        }
+
+        .modal-meta-grid .meta-item i {
+            color: var(--secondary);
+            font-size: 20px;
+        }
+
+        .modal-meta-grid .meta-item .label {
+            font-size: 11px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .modal-meta-grid .meta-item .value {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .modal-desc-title {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+            border-left: 4px solid var(--secondary);
+            padding-left: 12px;
+        }
+
+        .modal-desc-content {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .modal-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-top: 1px solid #edf2f7;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .modal-amenities .amenity {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8f9fb;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .modal-amenities .amenity i {
+            color: var(--secondary);
+        }
+
+        .modal-investor {
+            background: #f8f9fb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .modal-investor .investor-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .modal-investor .investor-info h4 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        .modal-investor .investor-info p {
+            color: var(--text-gray);
+            font-size: 13px;
+        }
+
+        /* ============================================ */
+        /* === MODAL FORM BÁO GIÁ CHI TIẾT === */
+        /* ============================================ */
+        .modal-form-box {
+            background: var(--primary);
+            color: #fff;
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        .modal-form-box h4 {
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .modal-form-box .form-sub {
+            color: #a0b2c6;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .modal-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .modal-form-grid input,
+        .modal-form-grid select,
+        .modal-form-grid textarea {
+            padding: 12px 16px;
+            border: none;
+            border-radius: 6px;
             outline: none;
             font-size: 14px;
+            width: 100%;
         }
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: #c5a880;
+
+        .modal-form-grid textarea {
+            grid-column: span 2;
+            resize: vertical;
+            min-height: 60px;
         }
-        .btn-submit {
-            background-color: #c5a880;
+
+        .modal-form-grid .btn-submit-modal {
+            grid-column: span 2;
+            background: var(--secondary);
             color: #fff;
             border: none;
             padding: 14px;
-            width: 100%;
-            font-weight: 600;
-            font-size: 16px;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background 0.3s;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .btn-submit:hover {
-            background-color: #0f2b46;
+
+        .modal-form-grid .btn-submit-modal:hover {
+            background: var(--secondary-hover);
+            transform: translateY(-2px);
+        }
+
+        .modal-form-grid .btn-zalo-quick {
+            grid-column: span 2;
+            background: var(--zalo-color);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .modal-form-grid .btn-zalo-quick:hover {
+            background: #0052cc;
+            transform: translateY(-2px);
+        }
+
+        .modal-form-grid .btn-phone-quick {
+            grid-column: span 2;
+            background: var(--phone-color);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .modal-form-grid .btn-phone-quick:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .quick-contact-divider {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #a0b2c6;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        .quick-contact-divider::before,
+        .quick-contact-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* --- FLOATING SUPPORT BUTTONS --- */
+        .support-floating {
+            position: fixed;
+            right: 20px;
+            bottom: 120px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            animation: floatIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1s both;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateX(80px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        .support-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .support-btn:hover {
+            transform: scale(1.12) translateX(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .support-btn .tooltip {
+            position: absolute;
+            right: 75px;
+            background: #1a2332;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .support-btn .tooltip::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 8px solid #1a2332;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+
+        .support-btn:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            right: 80px;
+        }
+
+        .support-btn.zalo {
+            background: var(--zalo-color);
+            background: linear-gradient(135deg, #0068ff, #0052cc);
+        }
+
+        .support-btn.zalo:hover {
+            background: linear-gradient(135deg, #0052cc, #003d99);
+        }
+
+        .support-btn.zalo .tooltip {
+            background: var(--zalo-color);
+        }
+
+        .support-btn.zalo .tooltip::after {
+            border-left-color: var(--zalo-color);
+        }
+
+        .support-btn.phone {
+            background: var(--phone-color);
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            animation: phonePulse 2s infinite;
+        }
+
+        .support-btn.phone:hover {
+            animation: none;
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+        }
+
+        .support-btn.phone .tooltip {
+            background: var(--phone-color);
+        }
+
+        .support-btn.phone .tooltip::after {
+            border-left-color: var(--phone-color);
+        }
+
+        @keyframes phonePulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(46, 204, 113, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+
+        .support-btn .badge-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
+        }
+
+        /* --- TOAST --- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #fff;
+            padding: 18px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            display: none;
+            align-items: center;
+            gap: 15px;
+            z-index: 99999;
+            border-left: 4px solid var(--secondary);
+            animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast .toast-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .toast .toast-icon.success { background: #2ecc71; }
+        .toast .toast-icon.info { background: #3498db; }
+        .toast .toast-icon.warning { background: #f39c12; }
+
+        .toast .toast-content h4 {
+            font-size: 15px;
+            color: var(--primary);
+        }
+
+        .toast .toast-content p {
+            font-size: 13px;
+            color: var(--text-gray);
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: #091929;
+            background: #091929;
             color: #a0b2c6;
-            padding: 40px 0;
-            text-align: center;
-            font-size: 14px;
+            padding: 50px 0 30px;
             border-top: 1px solid #142d44;
         }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .search-box { grid-template-columns: 1fr; gap: 10px; }
-            .hero { height: auto; padding: 60px 20px; }
-            .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
-        @media (max-width: 600px) {
-            .nav-links { display: none; }
-            .grid-properties { grid-template-columns: 1fr; }
-            .hero h2 { font-size: 28px; }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--secondary);
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 350px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: #a0b2c6;
+        }
+
+        .footer-social a:hover {
+            background: var(--secondary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul a {
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-col ul a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #142d44;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-bottom strong {
+            color: var(--secondary);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .search-box {
+                grid-template-columns: 1fr 1fr;
+            }
+            .search-box .btn-search {
+                grid-column: span 2;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .modal-meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .modal-form-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-form-grid textarea,
+            .modal-form-grid .btn-submit-modal,
+            .modal-form-grid .btn-zalo-quick,
+            .modal-form-grid .btn-phone-quick,
+            .quick-contact-divider {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+                background: #fff;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hero h2 { font-size: 32px; }
+            .hero-stats { flex-wrap: wrap; gap: 25px; }
+
+            .search-box {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            .search-box .btn-search {
+                grid-column: span 1;
+                padding: 16px;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form { padding: 25px; }
+            .form-row { grid-template-columns: 1fr; }
+
+            .grid-properties {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-box { max-width: 100%; margin: 10px; }
+            .modal-body { padding: 20px; }
+            .modal-img { height: 220px; }
+            .modal-meta-grid { grid-template-columns: repeat(2, 1fr); }
+            .modal-form-grid { grid-template-columns: 1fr; }
+            .modal-form-grid textarea,
+            .modal-form-grid .btn-submit-modal,
+            .modal-form-grid .btn-zalo-quick,
+            .modal-form-grid .btn-phone-quick,
+            .quick-contact-divider {
+                grid-column: span 1;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .grid-properties.grid-view .property-card {
+                flex-direction: column;
+            }
+            .grid-properties.grid-view .property-img {
+                width: 100%;
+                height: 250px;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .support-floating {
+                right: 15px;
+                bottom: 100px;
+                gap: 10px;
+            }
+
+            .support-btn {
+                width: 52px;
+                height: 52px;
+                font-size: 22px;
+            }
+
+            .support-btn .tooltip {
+                display: none;
+            }
+
+            .support-btn .badge-count {
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 26px; }
+            .hero p { font-size: 15px; }
+            .hero-stats .stat-number { font-size: 28px; }
+            .section-title h2 { font-size: 28px; }
+            .contact-info h2 { font-size: 28px; }
+            .modal-title { font-size: 20px; }
+            .modal-price { font-size: 22px; }
+            .modal-meta-grid { grid-template-columns: 1fr 1fr; }
+            .modal-form-grid { grid-template-columns: 1fr; }
+            .modal-form-grid textarea,
+            .modal-form-grid .btn-submit-modal,
+            .modal-form-grid .btn-zalo-quick,
+            .modal-form-grid .btn-phone-quick,
+            .quick-contact-divider {
+                grid-column: span 1;
+            }
+
+            .support-floating {
+                right: 10px;
+                bottom: 90px;
+                gap: 8px;
+            }
+
+            .support-btn {
+                width: 46px;
+                height: 46px;
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ==================== HEADER ==================== -->
     <header>
-        <div class="container navbar">
-            <div class="logo">
-                <h1>LANDMARK<span>REALTY</span></h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#" class="active">Trang Chủ</a></li>
-                <li><a href="#properties-section">Danh Sách Dự Án</a></li>
-                <li><a href="#contact">Liên Hệ</a></li>
-                <li><a href="#contact" class="btn-contact-nav">Nhận Báo Giá Tổng Thể</a></li>
-            </ul>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>LANDMARK<span>REALTY</span></h1>
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" class="active">Trang Chủ</a></li>
+                    <li><a href="#properties-section">Danh Sách Dự Án</a></li>
+                    <li><a href="#contact-section">Liên Hệ</a></li>
+                    <li><a href="#" class="btn-contact-nav" onclick="scrollToContact()">Nhận Báo Giá</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- BANNER & LIVE FILTER -->
+    <!-- ==================== HERO ==================== -->
     <section class="hero">
-        <h2>Hệ Thống Phân Phối BĐS Toàn Quốc</h2>
-        <p>Khám phá giỏ hàng 30+ dự án căn hộ, biệt thự và đất nền tiềm năng nhất</p>
-        
+        <div class="hero-content">
+            <h2>Hệ Thống Phân Phối BĐS Toàn Quốc</h2>
+            <p>Khám phá giỏ hàng 30+ dự án căn hộ, biệt thự và đất nền tiềm năng nhất</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label">Dự Án Cao Cấp</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Năm Kinh Nghiệm</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Khách Hàng Hài Lòng</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bộ lọc nâng cao -->
         <div class="search-box">
-            <select id="filter-type">
-                <option value="all">Tất cả Loại Bất Động Sản</option>
-                <option value="apartment">Căn hộ chung cư</option>
-                <option value="villa">Biệt thự liền kề</option>
-                <option value="land">Đất nền dự án</option>
-            </select>
-            <select id="filter-location">
-                <option value="all">Tất cả Khu vực</option>
-                <option value="hanoi">Hà Nội</option>
-                <option value="hcm">TP. Hồ Chí Minh</option>
-                <option value="danang">Đà Nẵng</option>
-            </select>
-            <select id="filter-price">
-                <option value="all">Tất cả Mức giá</option>
-                <option value="low">Dưới 3 Tỷ</option>
-                <option value="mid">3 - 8 Tỷ</option>
-                <option value="high">Trên 8 Tỷ</option>
-            </select>
-            <button onclick="filterProperties()">Lọc Kết Quả</button>
+            <div class="filter-group">
+                <select id="filter-type">
+                    <option value="all">Tất cả Loại BĐS</option>
+                    <option value="apartment">Căn hộ chung cư</option>
+                    <option value="villa">Biệt thự liền kề</option>
+                    <option value="land">Đất nền dự án</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="filter-province" onchange="updateDistricts()">
+                    <option value="all">Tất cả Tỉnh/TP</option>
+                    <option value="hanoi">Hà Nội</option>
+                    <option value="hcm">TP. Hồ Chí Minh</option>
+                    <option value="danang">Đà Nẵng</option>
+                    <option value="haiphong">Hải Phòng</option>
+                    <option value="cantho">Cần Thơ</option>
+                    <option value="binhduong">Bình Dương</option>
+                    <option value="dongnai">Đồng Nai</option>
+                    <option value="baria">Bà Rịa - Vũng Tàu</option>
+                    <option value="quangninh">Quảng Ninh</option>
+                    <option value="nhatrang">Khánh Hòa</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="filter-district">
+                    <option value="all">Tất cả Quận/Huyện</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="filter-price">
+                    <option value="all">Tất cả Mức giá</option>
+                    <option value="low">Dưới 3 Tỷ</option>
+                    <option value="mid">3 - 8 Tỷ</option>
+                    <option value="high">Trên 8 Tỷ</option>
+                </select>
+            </div>
+            <button class="btn-search" onclick="filterProperties()">
+                <i class="fas fa-search"></i> Lọc Kết Quả
+            </button>
         </div>
     </section>
 
-    <!-- DANH SÁCH 30 SẢN PHẨM CHI TIẾT -->
+    <!-- ==================== PROPERTIES ==================== -->
     <section class="properties" id="properties-section">
         <div class="container">
             <div class="section-title">
-                <h2>Danh Sách Dự Án Chi Tiết</h2>
-                <p>Thông tin cập nhật chính xác, bảng giá gốc từ chủ đầu tư</p>
+                <h2>Danh Sách Dự Án <span>Chi Tiết</span></h2>
+                <p>Click trực tiếp vào từng sản phẩm để xem đầy đủ thông tin chi tiết và mặt bằng</p>
                 <div class="bar"></div>
             </div>
 
-            <div class="results-count" id="count-text">Hiển thị tất cả 30 dự án</div>
+            <div class="results-header">
+                <div class="results-count">
+                    Hiển thị <strong id="resultCount">30</strong> dự án
+                </div>
+                <div class="view-options">
+                    <button class="active" onclick="changeView('grid')" title="Grid View">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button onclick="changeView('list')" title="List View">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
 
-            <div class="grid-properties" id="properties-grid">
-                <!-- Javascript sẽ tự động render 30 sản phẩm ở đây để code HTML sạch gọn và chuyên nghiệp -->
+            <div class="grid-properties" id="propertyGrid"></div>
+
+            <div class="pagination" id="pagination">
+                <button onclick="changePage('prev')" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="active" onclick="changePage(1)">1</button>
+                <button onclick="changePage(2)">2</button>
+                <button onclick="changePage(3)">3</button>
+                <button onclick="changePage('next')" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- FORM LIÊN HỆ & TƯ VẤN -->
-    <section class="contact-section" id="contact">
-        <div class="container contact-wrapper">
-            <div class="contact-info">
-                <h2>Hỗ Trợ Tư Vấn & Xem Nhà Mẫu</h2>
-                <p>Quý khách hàng quan tâm đến bất kỳ dự án nào trong hệ thống, vui lòng để lại thông tin. Đội ngũ chuyên viên tư vấn sẽ gửi trọn bộ tài liệu gồm: Mặt bằng chi tiết, chính sách chiết khấu và bảng tính dòng tiền đầu tư.</p>
-                <div class="info-item"><strong>Hotline:</strong> 1900 88xx (Hỗ trợ 24/7)</div>
-                <div class="info-item"><strong>Email:</strong> tưvan@landmarkrealty.vn</div>
-                <div class="info-item"><strong>Hà Nội:</strong> Vinhomes Ocean Park, Gia Lâm, Hà Nội</div>
-                <div class="info-item"><strong>TP.HCM:</strong> Khu đô thị Sala, Quận 2, TP. Thủ Đức</div>
-            </div>
-
-            <div class="contact-form">
-                <h3>Yêu Cầu Thông Tin Dự Án</h3>
-                <form onsubmit="event.preventDefault(); alert('Hệ thống đã ghi nhận thành công! Chuyên viên phụ trách dự án này sẽ gọi lại hỗ trợ anh/chị ngay lập tức.');">
-                    <div class="form-group">
-                        <input type="text" placeholder="Họ và tên của bạn" required>
+    <!-- ==================== CONTACT ==================== -->
+    <section class="contact-section" id="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Hỗ Trợ Tư Vấn &amp; <span>Xem Nhà Mẫu</span></h2>
+                    <p>Quý khách hàng quan tâm đến hệ thống, vui lòng để lại thông tin. Đội ngũ chuyên viên tư vấn sẽ gửi trọn bộ tài liệu chi tiết.</p>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <strong>Hotline 24/7</strong>
+                            <span class="text">0366.388.104 (Hỗ trợ 24/7)</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="tel" placeholder="Số điện thoại nhận bảng giá" required>
+                    <div class="info-item">
+                        <div class="icon"><i class="fab fa-zalo"></i></div>
+                        <div>
+                            <strong>Zalo</strong>
+                            <span class="text">0366.388.104 - Chat nhanh</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <textarea rows="4" placeholder="Nhập tên dự án bạn muốn nhận thông tin hoặc đặt lịch đi xem thực tế..."></textarea>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <strong>Email</strong>
+                            <span class="text">tuvan@landmarkrealty.vn</span>
+                        </div>
                     </div>
-                    <button type="submit" class="btn-submit">Nhận Tài Liệu & Báo Giá Toàn Bộ</button>
-                </form>
+                    <div class="info-item">
+                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <strong>Địa chỉ</strong>
+                            <span class="text">Tầng 20, Tòa nhà Landmark, 123 Nguyễn Huệ, Q.1, TP.HCM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Yêu Cầu Thông Tin Toàn Bộ Hệ Thống</h3>
+                    <p class="form-subtitle">Nhận ngay bảng giá và tài liệu dự án chi tiết</p>
+                    <form id="contactForm" onsubmit="handleContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" placeholder="Họ và tên *" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" placeholder="Số điện thoại *" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option value="">Dự án quan tâm</option>
+                                <option>Tất cả dự án</option>
+                                <option>Căn hộ chung cư</option>
+                                <option>Biệt thự liền kề</option>
+                                <option>Đất nền</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Ghi chú thêm (nếu có)..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Nhận Tài Liệu Toàn Bộ
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ==================== MODAL CHI TIẾT NÂNG CAO ==================== -->
+    <div class="modal-overlay" id="property-modal">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeDetails()">&times;</button>
+            <img class="modal-img" id="modal-img" src="" alt="Property" />
+            <div class="modal-body">
+                <div class="modal-header">
+                    <div>
+                        <div class="modal-price" id="modal-price"></div>
+                        <div class="modal-title" id="modal-title"></div>
+                    </div>
+                    <span class="modal-badge" id="modal-badge"></span>
+                </div>
+                <div class="modal-location" id="modal-location"></div>
+
+                <div class="modal-meta-grid" id="modal-meta-grid">
+                    <div class="meta-item">
+                        <i class="fas fa-vector-square"></i>
+                        <span class="label">Diện tích</span>
+                        <span class="value" id="modal-space">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-bed"></i>
+                        <span class="label">Phòng ngủ</span>
+                        <span class="value" id="modal-bed">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-bath"></i>
+                        <span class="label">Phòng tắm</span>
+                        <span class="value" id="modal-bath">--</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-tag"></i>
+                        <span class="label">Loại hình</span>
+                        <span class="value" id="modal-type">--</span>
+                    </div>
+                </div>
+
+                <div class="modal-desc-title">Mô Tả Chi Tiết Dự Án</div>
+                <div class="modal-desc-content" id="modal-desc"></div>
+
+                <!-- Tiện ích dự án -->
+                <div class="modal-amenities" id="modal-amenities">
+                    <span class="amenity"><i class="fas fa-swimming-pool"></i> Hồ bơi</span>
+                    <span class="amenity"><i class="fas fa-dumbbell"></i> Gym</span>
+                    <span class="amenity"><i class="fas fa-tree"></i> Công viên</span>
+                    <span class="amenity"><i class="fas fa-shield-alt"></i> Bảo vệ 24/7</span>
+                    <span class="amenity"><i class="fas fa-car"></i> Hầm xe</span>
+                    <span class="amenity"><i class="fas fa-store"></i> Siêu thị</span>
+                    <span class="amenity"><i class="fas fa-school"></i> Trường học</span>
+                    <span class="amenity"><i class="fas fa-hospital"></i> Bệnh viện</span>
+                </div>
+
+                <!-- Thông tin chủ đầu tư -->
+                <div class="modal-investor">
+                    <div class="investor-icon">L</div>
+                    <div class="investor-info">
+                        <h4>Landmark Realty Group</h4>
+                        <p>Chủ đầu tư uy tín hàng đầu với 15 năm kinh nghiệm phát triển bất động sản cao cấp</p>
+                    </div>
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- === FORM NHẬN BÁO GIÁ NGAY TRONG POPUP === -->
+                <!-- ============================================================ -->
+                <div class="modal-form-box">
+                    <h4>📋 Nhận Báo Giá &amp; Đặt Lịch Xem Thực Tế</h4>
+                    <p class="form-sub">Điền thông tin để nhận ngay bảng giá, chính sách bán hàng và ưu đãi tốt nhất</p>
+                    <form class="modal-form-grid" id="modalPriceForm" onsubmit="handlePriceRequest(event)">
+                        <input type="text" placeholder="Họ và tên *" required />
+                        <input type="tel" placeholder="Số điện thoại *" required />
+                        <input type="email" placeholder="Email" />
+                        <select required>
+                            <option value="">Hình thức quan tâm</option>
+                            <option value="mua">Mua để ở</option>
+                            <option value="dau-tu">Đầu tư sinh lời</option>
+                            <option value="cho-thue">Mua cho thuê</option>
+                            <option value="tham-khao">Tham khảo</option>
+                        </select>
+                        <textarea placeholder="Ghi chú thêm (nhu cầu, tài chính dự kiến...)" rows="2"></textarea>
+                        
+                        <button type="submit" class="btn-submit-modal">
+                            <i class="fas fa-paper-plane"></i> Gửi Yêu Cầu Báo Giá
+                        </button>
+
+                        <div class="quick-contact-divider">Hoặc liên hệ nhanh qua</div>
+
+                        <a href="https://zalo.me/0366388104" target="_blank" class="btn-zalo-quick">
+                            <i class="fab fa-zalo"></i> Chat Zalo 0366.388.104
+                        </a>
+
+                        <a href="tel:0366388104" class="btn-phone-quick">
+                            <i class="fas fa-phone-alt"></i> Gọi Ngay 0366.388.104
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- === FLOATING SUPPORT BUTTONS - ZALO & PHONE === -->
+    <!-- ============================================================ -->
+    <div class="support-floating" id="supportFloating">
+        <a href="https://zalo.me/0366388104" target="_blank" class="support-btn zalo" title="Chat Zalo">
+            <i class="fab fa-zalo"></i>
+            <span class="tooltip">Chat Zalo</span>
+            <span class="badge-count">1</span>
+        </a>
+
+        <a href="tel:0366388104" class="support-btn phone" title="Gọi ngay">
+            <i class="fas fa-phone-alt"></i>
+            <span class="tooltip">Gọi ngay 0366.388.104</span>
+        </a>
+    </div>
+
+    <!-- ==================== TOAST ==================== -->
+    <div class="toast" id="toast">
+        <div class="toast-icon success"><i class="fas fa-check"></i></div>
+        <div class="toast-content">
+            <h4>Thành công!</h4>
+            <p>Chúng tôi sẽ liên hệ lại trong 24h tới.</p>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Landmark Realty. Toàn bộ thông tin dự án được kiểm duyệt chính xác.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>LANDMARK<span>REALTY</span></h3>
+                    <p>Hệ thống phân phối bất động sản hàng đầu Việt Nam với hơn 30 dự án cao cấp trên toàn quốc.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://zalo.me/0366388104" target="_blank"><i class="fab fa-zalo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Dự Án</h4>
+                    <ul>
+                        <li><a href="#">Căn hộ chung cư</a></li>
+                        <li><a href="#">Biệt thự liền kề</a></li>
+                        <li><a href="#">Đất nền</a></li>
+                        <li><a href="#">BĐS nghỉ dưỡng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="#">Chính sách bán hàng</a></li>
+                        <li><a href="#">Hướng dẫn mua nhà</a></li>
+                        <li><a href="#">Tư vấn pháp lý</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Về chúng tôi</h4>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Landmark Realty. Hotline: <strong>0366.388.104</strong> (Zalo 24/7)</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: QUẢN LÝ VÀ BỘ LỌC 30 SẢN PHẨM CHUYÊN NGHIỆP -->
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // Cơ sở dữ liệu 30 dự án chi tiết thực tế
+        // ======= DANH SÁCH QUẬN/HUYỆN THEO TỈNH =======
+        const districtData = {
+            hanoi: [
+                'Ba Đình', 'Hoàn Kiếm', 'Hai Bà Trưng', 'Đống Đa', 'Tây Hồ', 
+                'Cầu Giấy', 'Thanh Xuân', 'Hoàng Mai', 'Long Biên', 'Bắc Từ Liêm',
+                'Nam Từ Liêm', 'Gia Lâm', 'Đông Anh', 'Sóc Sơn', 'Mê Linh',
+                'Hoài Đức', 'Quốc Oai', 'Thạch Thất', 'Chương Mỹ', 'Thanh Trì',
+                'Thường Tín', 'Phú Xuyên', 'Ứng Hòa', 'Mỹ Đức', 'Ba Vì'
+            ],
+            hcm: [
+                'Quận 1', 'Quận 2', 'Quận 3', 'Quận 4', 'Quận 5',
+                'Quận 6', 'Quận 7', 'Quận 8', 'Quận 9', 'Quận 10',
+                'Quận 11', 'Quận 12', 'Bình Thạnh', 'Gò Vấp', 'Phú Nhuận',
+                'Tân Bình', 'Tân Phú', 'Bình Tân', 'Thủ Đức', 'Nhà Bè',
+                'Hóc Môn', 'Bình Chánh', 'Củ Chi', 'Cần Giờ'
+            ],
+            danang: [
+                'Hải Châu', 'Thanh Khê', 'Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu',
+                'Cẩm Lệ', 'Hòa Vang', 'Hoàng Sa'
+            ],
+            haiphong: [
+                'Hồng Bàng', 'Lê Chân', 'Ngô Quyền', 'Kiến An', 'Hải An',
+                'Dương Kinh', 'Đồ Sơn', 'An Dương', 'An Lão', 'Kiến Thụy',
+                'Vĩnh Bảo', 'Tiên Lãng', 'Thủy Nguyên', 'Cát Hải', 'Bạch Long Vĩ'
+            ],
+            cantho: [
+                'Ninh Kiều', 'Cái Răng', 'Bình Thủy', 'Ô Môn', 'Thốt Nốt',
+                'Phong Điền', 'Cờ Đỏ', 'Thới Lai', 'Vĩnh Thạnh'
+            ],
+            binhduong: [
+                'Thủ Dầu Một', 'Bến Cát', 'Tân Uyên', 'Dĩ An', 'Thuận An',
+                'Bàu Bàng', 'Bắc Tân Uyên', 'Dầu Tiếng', 'Phú Giáo'
+            ],
+            dongnai: [
+                'Biên Hòa', 'Long Khánh', 'Trảng Bom', 'Long Thành', 'Nhơn Trạch',
+                'Vĩnh Cửu', 'Xuân Lộc', 'Thống Nhất', 'Định Quán', 'Tân Phú', 'Cẩm Mỹ'
+            ],
+            baria: [
+                'Vũng Tàu', 'Bà Rịa', 'Phú Mỹ', 'Châu Đức', 'Xuyên Mộc',
+                'Long Điền', 'Đất Đỏ', 'Côn Đảo'
+            ],
+            quangninh: [
+                'Hạ Long', 'Cẩm Phả', 'Uông Bí', 'Móng Cái', 'Quảng Yên',
+                'Đông Triều', 'Hoành Bồ', 'Vân Đồn', 'Cô Tô', 'Hải Hà', 'Đầm Hà', 'Tiên Yên'
+            ],
+            nhatrang: [
+                'Nha Trang', 'Cam Ranh', 'Ninh Hòa', 'Vạn Ninh', 'Diên Khánh',
+                'Cam Lâm', 'Khánh Vĩnh', 'Khánh Sơn', 'Trường Sa'
+            ]
+        };
+
+        // ======= DATA 30 DỰ ÁN =======
         const propertiesData = [
-            // CĂN HỘ CHUNG CƯ (10 căn)
-            { id: 1, type: "apartment", location: "hcm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "4.2 Tỷ", title: "Căn Hộ Cao Cấp Vinhomes Grand Park", locText: "Quận 9, TP. Hồ Chí Minh", space: "72 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80" },
-            { id: 2, type: "apartment", location: "hanoi", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "5.5 Tỷ", title: "Chung Cư Cao Cấp Masteri West Heights", locText: "Nam Từ Liêm, Hà Nội", space: "80 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" },
-            { id: 3, type: "apartment", location: "danang", priceRange: "mid", badge: "soon", badgeText: "Sắp Ra Mắt", price: "3.8 Tỷ", title: "Căn Hộ Cận Biển The Filmore Da Nang", locText: "Hải Châu, Đà Nẵng", space: "65 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" },
-            { id: 4, type: "apartment", location: "hcm", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "12 Tỷ", title: "Căn Hộ Hạng Sang Empire City Thủ Thiêm", locText: "Quận 2, TP. Hồ Chí Minh", space: "98 m²", bed: "3 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80" },
-            { id: 5, type: "apartment", location: "hanoi", priceRange: "low", badge: "rent", badgeText: "Cho Thuê", price: "2.8 Tỷ", title: "Căn Hộ Studio Sun Grand City", locText: "Tây Hồ, Hà Nội", space: "45 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=500&q=80" },
-            { id: 6, type: "apartment", location: "hcm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "6.1 Tỷ", title: "Chung Cư Cao Cấp Sunrise City", locText: "Quận 7, TP. Hồ Chí Minh", space: "85 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=500&q=80" },
-            { id: 7, type: "apartment", location: "hanoi", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "4.9 Tỷ", title: "Căn Hộ The Matrix One Mỹ Đình", locText: "Cầu Giấy, Hà Nội", space: "87 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=500&q=80" },
-            { id: 8, type: "apartment", location: "danang", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.5 Tỷ", title: "Chung Cư Mường Thanh Sơn Trà Vị Trí Đẹp", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "60 m²", bed: "2 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80" },
-            { id: 9, type: "apartment", location: "hcm", priceRange: "high", badge: "soon", badgeText: "Giới Hạn", price: "18 Tỷ", title: "Sky Villa Serenity Sky Villas Luxury", locText: "Quận 3, TP. Hồ Chí Minh", space: "150 m²", bed: "3 PN", bath: "3 WC", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" },
-            { id: 10, type: "apartment", location: "hanoi", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.9 Tỷ", title: "Căn Hộ Thông Minh Vinhomes Smart City", locText: "Nam Từ Liêm, Hà Nội", space: "63 m²", bed: "2 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=500&q=80" },
-
-            // BIỆT THỰ LIỀN KỀ (10 căn)
-            { id: 11, type: "villa", location: "hanoi", priceRange: "high", badge: "hot", badgeText: "Hot", price: "25 Tỷ", title: "Biệt Thự Vinhomes Riverside Hoa Sữa", locText: "Long Biên, Hà Nội", space: "280 m²", bed: "5 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=500&q=80" },
-            { id: 12, type: "villa", location: "hcm", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "32 Tỷ", title: "Biệt Thự Ven Sông Chateau Phú Mỹ Hưng", locText: "Quận 7, TP. Hồ Chí Minh", space: "310 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80" },
-            { id: 13, type: "villa", location: "danang", priceRange: "high", badge: "soon", badgeText: "Sắp Ra Mắt", price: "19 Tỷ", title: "Biệt Thự Nghỉ Dưỡng Regal One River", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "300 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=500&q=80" },
-            { id: 14, type: "villa", location: "hanoi", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "14 Tỷ", title: "Liền Kề Gamuda Gardens View Công Viên", locText: "Hoàng Mai, Hà Nội", space: "120 m²", bed: "3 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=500&q=80" },
-            { id: 15, type: "villa", location: "hcm", priceRange: "high", badge: "hot", badgeText: "Hiếm", price: "45 Tỷ", title: "Dinh Thự The Riviera Cove VIP", locText: "Quận 9, TP. Hồ Chí Minh", space: "500 m²", bed: "5 PN", bath: "6 WC", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=500&q=80" },
-            { id: 16, type: "villa", location: "danang", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "16 Tỷ", title: "Biệt Thự Sân Golf Euro Village 2", locText: "Cẩm Lệ, Đà Nẵng", space: "250 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=500&q=80" },
-            { id: 17, type: "villa", location: "hanoi", priceRange: "high", badge: "rent", badgeText: "Đang Thuê", price: "21 Tỷ", title: "Biệt Thự Đơn Lập Ciputra Khu K", locText: "Tây Hồ, Hà Nội", space: "320 m²", bed: "5 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" },
-            { id: 18, type: "villa", location: "hcm", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "15 Tỷ", title: "Nhà Phố Thương Mại Verosa Park Khang Điền", locText: "Quận 9, TP. Hồ Chí Minh", space: "140 m²", bed: "3 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" },
-            { id: 19, type: "villa", location: "hanoi", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "7.8 Tỷ", title: "Shophouse Liền Kề Hinode Royal Park", locText: "Hoài Đức, Hà Nội", space: "100 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=500&q=80" },
-            { id: 20, type: "villa", location: "danang", priceRange: "high", badge: "hot", badgeText: "Hot", price: "28 Tỷ", title: "Biệt Thự Furama Resort Mặt Biển Trường Sa", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "400 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=500&q=80" },
-
-            // ĐẤT NỀN DỰ ÁN (10 căn)
-            { id: 21, type: "land", location: "danang", priceRange: "mid", badge: "open", badgeText: "Sổ Đỏ Sẵn", price: "4.5 Tỷ", title: "Đất Nền Ven Biển Nam Hòa Xuân Giá Tốt", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "100 m²", bed: "Đất nền", bath: "Thổ cư 100%", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=500&q=80" },
-            { id: 22, type: "land", location: "hanoi", priceRange: "mid", badge: "hot", badgeText: "Tiềm Năng", price: "6.2 Tỷ", title: "Đất Nền Lô Góc Khu Đô Thị Thanh Hà", locText: "Hà Đông, Hà Nội", space: "125 m²", bed: "Đất nền", bath: "Sổ đỏ riêng", img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80" },
-            { id: 23, type: "land", location: "hcm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "7.5 Tỷ", title: "Đất Nền Sổ Đỏ KDC Cát Lái Quận 2", locText: "Quận 2, TP. Hồ Chí Minh", space: "110 m²", bed: "Đất nền", bath: "Xây tự do", img: "https://images.unsplash.com/photo-1444653389962-8149286c578a?auto=format&fit=crop&w=500&q=80" },
-            { id: 24, type: "land", location: "danang", priceRange: "low", badge: "open", badgeText: "Giá Rẻ", price: "2.1 Tỷ", title: "Đất Nền Dự Án FPT City Đà Nẵng Giá Đầu Tư", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "90 m²", bed: "Đất nền", bath: "Hạ tầng hoàn thiện", img: "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=500&q=80" },
-            { id: 25, type: "land", location: "hanoi", priceRange: "mid", badge: "soon", badgeText: "Suất Ngoại Giao", price: "5.8 Tỷ", title: "Đất Nền Khu Đô Thị Mới Nam An Khánh", locText: "Hoài Đức, Hà Nội", space: "150 m²", bed: "Đất nền", bath: "Đã phân lô", img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=500&q=80" },
-            { id: 26, type: "land", location: "hcm", priceRange: "high", badge: "hot", badgeText: "Vị Trí Đắc Địa", price: "13.5 Tỷ", title: "Đất Nền Mặt Tiền Đường Nguyễn Văn Linh", locText: "Quận 7, TP. Hồ Chí Minh", space: "200 m²", bed: "Đất nền", bath: "Sổ hồng", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80" },
-            { id: 27, type: "land", location: "danang", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.9 Tỷ", title: "Đất Nền Shophouse Vịnh An Hòa", locText: "Núi Thành, Đà Nẵng Nam", space: "105 m²", bed: "Đất nền", bath: "Mặt tiền 6m", img: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=500&q=80" },
-            { id: 28, type: "land", location: "hanoi", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "9 Tỷ", title: "Đất Nền Đô Thị Vệ Tinh Hòa Lạc Lô Góc", locText: "Thạch Thất, Hà Nội", space: "300 m²", bed: "Đất nền", bath: "Full Thổ Cư", img: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=500&q=80" },
-            { id: 29, type: "land", location: "hcm", priceRange: "low", badge: "soon", badgeText: "Giai Đoạn 1", price: "2.7 Tỷ", title: "Đất Nền Dự Án KDC Nhà Bè Giá Gốc", locText: "Nhà Bè, TP. Hồ Chí Minh", space: "80 m²", bed: "Đất nền", bath: "Sổ đỏ riêng", img: "https://images.unsplash.com/photo-1472214222541-d510753a4707?auto=format&fit=crop&w=500&q=80" },
-            { id: 30, type: "land", location: "danang", priceRange: "mid", badge: "hot", badgeText: "Đầu Tư Tốt", price: "5.1 Tỷ", title: "Đất Nền Mặt Sông Cổ Cò Sinh Thái", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "150 m²", bed: "Đất nền", bath: "Sổ đỏ trao tay", img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" }
+            // HÀ NỘI
+            { id: 1, type: "apartment", location: "hanoi", district: "Nam Từ Liêm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "4.2 Tỷ", title: "Căn Hộ Cao Cấp Vinhomes Smart City", locText: "Nam Từ Liêm, Hà Nội", space: "72 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", desc: "Dự án sở hữu đại công viên 36ha hàng đầu Đông Nam Á với hơn 15 công viên chủ đề đa dạng. Thừa hưởng hạ tầng giao thông kết nối đồng bộ, chuẩn sống xanh sinh thái quốc tế tinh hoa hàng đầu khu vực.", investor: "Vingroup" },
+            { id: 2, type: "apartment", location: "hanoi", district: "Cầu Giấy", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "5.5 Tỷ", title: "Chung Cư Cao Cấp Masteri West Heights", locText: "Cầu Giấy, Hà Nội", space: "80 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80", desc: "Tọa lạc tại vị trí kim cương lòng đại đô thị thông minh, mang đến không gian sống duy mỹ, tiện ích đặc quyền chuẩn resort 5 sao như bể bơi tầng thượng view panorama toàn cảnh.", investor: "Masterise Homes" },
+            { id: 3, type: "apartment", location: "hanoi", district: "Tây Hồ", priceRange: "low", badge: "rent", badgeText: "Cho Thuê", price: "2.8 Tỷ", title: "Căn Hộ Studio Sun Grand City", locText: "Tây Hồ, Hà Nội", space: "45 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80", desc: "Không gian nhỏ gọn nhưng tối ưu công năng lý tưởng cho chuyên gia nước ngoài thuê lâu dài, cách mặt hồ Tây chỉ 3 phút đi bộ cùng bầu không khí vô cùng thoáng đãng.", investor: "Sun Group" },
+            { id: 4, type: "villa", location: "hanoi", district: "Long Biên", priceRange: "high", badge: "hot", badgeText: "Hot", price: "25 Tỷ", title: "Biệt Thự Vinhomes Riverside Hoa Sữa", locText: "Long Biên, Hà Nội", space: "280 m²", bed: "5 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80", desc: "Khu biệt thự sinh thái xa hoa mang phong cách Ý ven sông lãng mạn. An ninh nghiêm ngặt đa lớp bảo vệ tuyệt đối không gian sống riêng tư thanh bình.", investor: "Vingroup" },
+            { id: 5, type: "villa", location: "hanoi", district: "Hoàng Mai", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "14 Tỷ", title: "Liền Kề Gamuda Gardens View Công Viên", locText: "Hoàng Mai, Hà Nội", space: "120 m²", bed: "3 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80", desc: "Khu đô thị xanh chuẩn sinh thái Malaysia, nhà liền kề có sân vườn trước sau, không gian thiết kế đón gió thiên nhiên ngập tràn năng lượng.", investor: "Gamuda Land" },
+            
+            // TP.HCM
+            { id: 6, type: "apartment", location: "hcm", district: "Quận 9", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "4.8 Tỷ", title: "Căn Hộ Cao Cấp Vinhomes Grand Park", locText: "Quận 9, TP. Hồ Chí Minh", space: "72 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80", desc: "Đại đô thị thông minh với hệ sinh thái tiện ích vượt trội, kết nối giao thông thuận tiện đến trung tâm thành phố.", investor: "Vingroup" },
+            { id: 7, type: "apartment", location: "hcm", district: "Quận 2", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "12 Tỷ", title: "Căn Hộ Hạng Sang Empire City Thủ Thiêm", locText: "Quận 2, TP. Hồ Chí Minh", space: "98 m²", bed: "3 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80", desc: "Tổ hợp căn hộ siêu cao cấp ngay lõi trung tâm tài chính mới Thủ Thiêm, sở hữu view trực diện hầm Thủ Thiêm và trung tâm Quận 1 phồn hoa lộng lẫy.", investor: "Keppel Land" },
+            { id: 8, type: "apartment", location: "hcm", district: "Quận 7", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "6.1 Tỷ", title: "Chung Cư Cao Cấp Sunrise City", locText: "Quận 7, TP. Hồ Chí Minh", space: "85 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80", desc: "Cửa ngõ kết nối giao thương sầm uất Phú Mỹ Hưng, đầy đủ tiện ích nội khu chuẩn quốc tế gồm siêu thị, hồ bơi tràn bờ, phòng gym cao cấp hiện đại.", investor: "Novaland" },
+            { id: 9, type: "villa", location: "hcm", district: "Quận 7", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "32 Tỷ", title: "Biệt Thự Ven Sông Chateau Phú Mỹ Hưng", locText: "Quận 7, TP. Hồ Chí Minh", space: "310 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80", desc: "Lâu đài kiến trúc hoàng gia châu Âu sang trọng soi bóng bên dòng sông cảnh quan thanh mát, khẳng định vị thế đỉnh cao của giới doanh nhân thành đạt.", investor: "Phú Mỹ Hưng" },
+            { id: 10, type: "villa", location: "hcm", district: "Quận 9", priceRange: "high", badge: "hot", badgeText: "Hiếm", price: "45 Tỷ", title: "Dinh Thự The Riviera Cove VIP", locText: "Quận 9, TP. Hồ Chí Minh", space: "500 m²", bed: "5 PN", bath: "6 WC", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80", desc: "Dinh thự đơn lập đẳng cấp siêu sang với bến đỗ du thuyền nội khu riêng biệt, hồ bơi lớn cùng thiết kế mở hòa mình tuyệt đối vào cảnh sắc sông nước thơ mộng.", investor: "Masterise Homes" },
+            
+            // ĐÀ NẴNG
+            { id: 11, type: "apartment", location: "danang", district: "Hải Châu", priceRange: "mid", badge: "soon", badgeText: "Sắp Ra Mắt", price: "3.8 Tỷ", title: "Căn Hộ Cận Biển The Filmore Da Nang", locText: "Hải Châu, Đà Nẵng", space: "65 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", desc: "Biểu tượng kiến trúc mới bên bờ sông Hàn thơ mộng. Thiết kế kính kịch trần sang trọng giúp bắt trọn ánh sáng tự nhiên và view biển Mỹ Khê tuyệt đẹp từ trên cao.", investor: "Sun Group" },
+            { id: 12, type: "apartment", location: "danang", district: "Ngũ Hành Sơn", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.5 Tỷ", title: "Chung Cư Mường Thanh Sơn Trà", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "60 m²", bed: "2 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80", desc: "Vị trí đắc địa ngay mặt tiền đường Võ Nguyên Giáp, thích hợp mua ở định cư lâu dài hoặc khai thác vận hành căn hộ dịch vụ du lịch biển sinh lời cực tốt.", investor: "Mường Thanh Group" },
+            { id: 13, type: "villa", location: "danang", district: "Ngũ Hành Sơn", priceRange: "high", badge: "soon", badgeText: "Sắp Ra Mắt", price: "19 Tỷ", title: "Biệt Thự Nghỉ Dưỡng Regal One River", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "300 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80", desc: "Ứng dụng toàn bộ đá mable tự nhiên nhập khẩu nguyên khối ốp toàn bộ mặt ngoài, hệ thống kính hộp low-E cản nhiệt bảo vệ sức khoẻ toàn diện.", investor: "Regal Group" },
+            
+            // CÁC TỈNH KHÁC
+            { id: 14, type: "land", location: "binhduong", district: "Thủ Dầu Một", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.8 Tỷ", title: "Đất Nền KDC Bình Dương New City", locText: "Thủ Dầu Một, Bình Dương", space: "120 m²", bed: "--", bath: "--", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80", desc: "Khu đô thị hiện đại với hạ tầng đồng bộ, gần các khu công nghiệp lớn, tiềm năng phát triển cực cao.", investor: "Becamex" },
+            { id: 15, type: "land", location: "dongnai", district: "Long Thành", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "4.5 Tỷ", title: "Đất Nền Cận Sân Bay Long Thành", locText: "Long Thành, Đồng Nai", space: "200 m²", bed: "--", bath: "--", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80", desc: "Vị trí vàng gần sân bay quốc tế Long Thành, cơ hội đầu tư sinh lời cao khi sân bay đi vào hoạt động.", investor: "Tập đoàn Đất Xanh" },
+            { id: 16, type: "apartment", location: "haiphong", district: "Ngô Quyền", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "3.2 Tỷ", title: "Căn Hộ Cao Cấp Hải Phòng Tower", locText: "Ngô Quyền, Hải Phòng", space: "75 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80", desc: "Tòa tháp đôi biểu tượng mới của thành phố hoa phượng đỏ, view trọn vẹn vịnh Lan Hạ và thành phố.", investor: "Hải Phòng Group" },
+            { id: 17, type: "apartment", location: "cantho", district: "Ninh Kiều", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "3.5 Tỷ", title: "Căn Hộ Tây Đô Riverside", locText: "Ninh Kiều, Cần Thơ", space: "70 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80", desc: "Dự án ven sông Hậu hiện đại, không gian sống thoáng mát, tiện ích đa dạng phục vụ cư dân.", investor: "Cần Thơ Land" },
+            { id: 18, type: "villa", location: "baria", district: "Vũng Tàu", priceRange: "high", badge: "hot", badgeText: "Hot", price: "28 Tỷ", title: "Biệt Thự Nghỉ Dưỡng Vũng Tàu View Biển", locText: "Vũng Tàu, Bà Rịa - Vũng Tàu", space: "350 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80", desc: "Biệt thự sang trọng view biển, không gian nghỉ dưỡng đẳng cấp với hồ bơi riêng và sân vườn rộng lớn.", investor: "Novaland" },
+            { id: 19, type: "apartment", location: "quangninh", district: "Hạ Long", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "5.8 Tỷ", title: "Căn Hộ View Vịnh Hạ Long", locText: "Hạ Long, Quảng Ninh", space: "85 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", desc: "Căn hộ cao cấp với view toàn cảnh vịnh Hạ Long - Di sản thiên nhiên thế giới, không gian sống đẳng cấp.", investor: "Sun Group" },
+            { id: 20, type: "apartment", location: "nhatrang", district: "Nha Trang", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "6.2 Tỷ", title: "Căn Hộ Ocean View Nha Trang", locText: "Nha Trang, Khánh Hòa", space: "78 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80", desc: "Dự án nghỉ dưỡng cao cấp ven biển, thiết kế hiện đại với view biển 180 độ, đầy đủ tiện ích resort.", investor: "Hưng Thịnh" },
         ];
 
-        // Hàm render hiển thị các thẻ dự án ra HTML
-        function displayProperties(products) {
-            const grid = document.getElementById("properties-grid");
-            const countText = document.getElementById("count-text");
-            
-            grid.innerHTML = ""; // Xoá nội dung cũ
-            countText.innerText = `Tìm thấy ${products.length} dự án phù hợp`;
+        // Bổ sung thêm dữ liệu để đủ 30 sản phẩm
+        const additionalTitles = [
+            "Căn Hộ Sang Trọng Central Park",
+            "Biệt Thự Nghỉ Dưỡng Ven Sông",
+            "Đất Nền KDC Xanh Tương Lai",
+            "Chung Cư Cao Cấp Golden Lake",
+            "Biệt Thự Song Lập The Manor",
+            "Căn Hộ View Sông Westgate",
+            "Đất Nền KĐT Phát Triển Mới",
+            "Biệt Thự Vườn Sinh Thái Eco Park",
+            "Căn Hộ Thương Mại Kim Cương",
+            "Đất Nền Vị Trí Đắc Địa"
+        ];
 
-            if (products.length === 0) {
-                grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:50px 0; font-size:18px; color:#777;">Không tìm thấy dự án nào khớp với tiêu chí lọc của bạn. Vui lòng chọn lại!</div>`;
+        while (propertiesData.length < 30) {
+            const id = propertiesData.length + 1;
+            const provinces = ['hanoi', 'hcm', 'danang', 'haiphong', 'cantho', 'binhduong', 'dongnai', 'baria', 'quangninh', 'nhatrang'];
+            const province = provinces[Math.floor(Math.random() * provinces.length)];
+            const districts = districtData[province] || ['Trung Tâm'];
+            const district = districts[Math.floor(Math.random() * districts.length)];
+            const type = ['apartment', 'villa', 'land'][Math.floor(Math.random() * 3)];
+            const priceRanges = ['low', 'mid', 'high'];
+            const pr = priceRanges[Math.floor(Math.random() * 3)];
+            const badges = ['open', 'soon', 'hot', 'rent'];
+            const badge = badges[Math.floor(Math.random() * 4)];
+            const badgeTexts = { open: 'Mở Bán', soon: 'Sắp Ra Mắt', hot: 'Hot', rent: 'Cho Thuê' };
+            const prices = { low: ['2.3 Tỷ', '2.8 Tỷ', '3.2 Tỷ'], mid: ['4.5 Tỷ', '5.9 Tỷ', '7.2 Tỷ'], high: ['11 Tỷ', '16 Tỷ', '28 Tỷ'] };
+            const spaces = ['65 m²', '80 m²', '95 m²', '110 m²', '150 m²', '220 m²', '300 m²'];
+            const beds = ['1 PN', '2 PN', '3 PN', '4 PN', '5 PN'];
+            const baths = ['1 WC', '2 WC', '3 WC', '4 WC', '5 WC'];
+            const provinceNames = { hanoi: 'Hà Nội', hcm: 'TP. Hồ Chí Minh', danang: 'Đà Nẵng', haiphong: 'Hải Phòng', 
+                                   cantho: 'Cần Thơ', binhduong: 'Bình Dương', dongnai: 'Đồng Nai', baria: 'Bà Rịa - Vũng Tàu',
+                                   quangninh: 'Quảng Ninh', nhatrang: 'Khánh Hòa' };
+            const investors = ['Vingroup', 'Novaland', 'Sun Group', 'Masterise Homes', 'Hưng Thịnh', 'Becamex', 'Đất Xanh'];
+
+            propertiesData.push({
+                id: id,
+                type: type,
+                location: province,
+                district: district,
+                priceRange: pr,
+                badge: badge,
+                badgeText: badgeTexts[badge],
+                price: prices[pr][Math.floor(Math.random() * prices[pr].length)],
+                title: additionalTitles[id % additionalTitles.length] + (id > 20 ? ' ' + id : ''),
+                locText: district + ', ' + provinceNames[province],
+                space: spaces[Math.floor(Math.random() * spaces.length)],
+                bed: beds[Math.floor(Math.random() * beds.length)],
+                bath: baths[Math.floor(Math.random() * baths.length)],
+                img: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+                      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+                      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+                      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
+                      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+                      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80'][id % 6],
+                desc: "Dự án cao cấp với hệ thống tiện ích đa dạng, vị trí đắc địa tại trung tâm thành phố. Sở hữu không gian sống sang trọng, hiện đại và an ninh tuyệt đối. Pháp lý minh bạch, sổ hồng riêng từng căn. Đây là cơ hội đầu tư sinh lời cực tốt cho khách hàng thông thái.",
+                investor: investors[Math.floor(Math.random() * investors.length)]
+            });
+        }
+
+        // Biến trạng thái
+        let currentPage = 1;
+        const itemsPerPage = 9;
+        let currentFiltered = [...propertiesData];
+        let currentView = 'grid';
+
+        // ======= CẬP NHẬT DANH SÁCH QUẬN/HUYỆN =======
+        function updateDistricts() {
+            const province = document.getElementById('filter-province').value;
+            const districtSelect = document.getElementById('filter-district');
+            districtSelect.innerHTML = '<option value="all">Tất cả Quận/Huyện</option>';
+
+            if (province !== 'all' && districtData[province]) {
+                districtData[province].forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+                districtSelect.disabled = false;
+            } else {
+                districtSelect.disabled = true;
+            }
+        }
+
+        // ======= HIỂN THỊ SẢN PHẨM =======
+        function displayProperties(items, page = 1) {
+            const grid = document.getElementById('propertyGrid');
+            grid.innerHTML = '';
+            grid.className = 'grid-properties ' + (currentView === 'list' ? 'grid-view' : '');
+
+            const start = (page - 1) * itemsPerPage;
+            const end = Math.min(start + itemsPerPage, items.length);
+            const pageItems = items.slice(start, end);
+
+            if (pageItems.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                        <i class="fas fa-search" style="font-size: 48px; color: #ccc; margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--text-gray);">Không tìm thấy dự án nào phù hợp</h3>
+                        <p style="color: #aaa;">Vui lòng thay đổi bộ lọc tìm kiếm</p>
+                    </div>
+                `;
+                document.getElementById('resultCount').textContent = '0';
+                updatePagination(items.length, page);
                 return;
             }
 
-            products.forEach(item => {
-                const card = document.createElement("div");
-                card.className = "property-card";
+            const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+
+            pageItems.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'property-card';
+                card.style.animationDelay = (index * 0.05) + 's';
+                card.style.opacity = '0';
+                card.style.animation = 'fadeInUp 0.5s ease forwards';
+                card.style.animationDelay = (index * 0.05) + 's';
+
+                const typeLabel = item.type === 'apartment' ? 'Căn hộ' : item.type === 'villa' ? 'Biệt thự' : 'Đất nền';
+                const isWishlisted = wishlist.includes(item.id);
+
                 card.innerHTML = `
                     <div class="property-img">
+                        <img src="${item.img}" alt="${item.title}" loading="lazy" />
                         <span class="badge ${item.badge}">${item.badgeText}</span>
-                        <img src="${item.img}" alt="${item.title}">
+                        <div class="property-actions">
+                            <button onclick="event.stopPropagation(); toggleWishlist(${item.id})" 
+                                    class="${isWishlisted ? 'wishlisted' : ''}" 
+                                    title="${isWishlisted ? 'Đã yêu thích' : 'Yêu thích'}">
+                                <i class="${isWishlisted ? 'fas' : 'far'} fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="property-content">
-                        <div class="price">${item.price}</div>
+                        <div class="price">${item.price} <span class="price-unit">/ căn</span></div>
                         <h3>${item.title}</h3>
-                        <p class="location">📍 ${item.locText}</p>
+                        <div class="location"><i class="fas fa-map-pin"></i> ${item.locText}</div>
                         <div class="details">
-                            <span>📐 ${item.space}</span>
-                            <span>🛏️ ${item.bed}</span>
-                            <span>🛁 ${item.bath}</span>
+                            <span class="detail-item"><i class="fas fa-vector-square"></i> ${item.space}</span>
+                            <span class="detail-item"><i class="fas fa-bed"></i> ${item.bed}</span>
+                            <span class="detail-item"><i class="fas fa-bath"></i> ${item.bath}</span>
+                            <span class="detail-item"><i class="fas fa-tag"></i> ${typeLabel}</span>
                         </div>
-                        <a href="#contact" class="btn-view">Yêu Cầu Báo Giá & Xem Thực Tế</a>
+                        <button class="btn-view" onclick="event.stopPropagation(); openDetails(${item.id})">
+                            <i class="fas fa-eye"></i> Yêu Cầu Báo Giá &amp; Xem Chi Tiết
+                        </button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
+
+            document.getElementById('resultCount').textContent = items.length;
+            updatePagination(items.length, page);
         }
 
-        // Hàm xử lý việc lọc dữ liệu khi click nút tìm kiếm
-        function filterProperties() {
-            const typeValue = document.getElementById("filter-type").value;
-            const locValue = document.getElementById("filter-location").value;
-            const priceValue = document.getElementById("filter-price").value;
+        // ======= PAGINATION =======
+        function updatePagination(totalItems, currentPage) {
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const container = document.getElementById('pagination');
+            let html = '<button onclick="changePage(\'prev\')" id="prevBtn"><i class="fas fa-chevron-left"></i></button>';
 
-            const filtered = propertiesData.filter(item => {
-                const matchType = (typeValue === "all" || item.type === typeValue);
-                const matchLoc = (locValue === "all" || item.location === locValue);
-                const matchPrice = (priceValue === "all" || item.priceRange === priceValue);
-                return matchType && matchLoc && matchPrice;
+            if (totalPages <= 7) {
+                for (let i = 1; i <= totalPages; i++) {
+                    html += `<button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</button>`;
+                }
+            } else {
+                html += `<button onclick="changePage(1)" class="${1 === currentPage ? 'active' : ''}">1</button>`;
+                if (currentPage > 3) html += '<span style="padding: 10px;">...</span>';
+                
+                for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+                    html += `<button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</button>`;
+                }
+                
+                if (currentPage < totalPages - 2) html += '<span style="padding: 10px;">...</span>';
+                html += `<button onclick="changePage(${totalPages})" class="${totalPages === currentPage ? 'active' : ''}">${totalPages}</button>`;
+            }
+
+            html += `<button onclick="changePage('next')" id="nextBtn"><i class="fas fa-chevron-right"></i></button>`;
+            container.innerHTML = html;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            if (prevBtn) prevBtn.disabled = currentPage === 1 || totalPages === 0;
+            if (nextBtn) nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+        }
+
+        function changePage(direction) {
+            const totalItems = currentFiltered.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+            if (direction === 'prev') {
+                if (currentPage > 1) currentPage--;
+            } else if (direction === 'next') {
+                if (currentPage < totalPages) currentPage++;
+            } else if (typeof direction === 'number') {
+                currentPage = Math.max(1, Math.min(direction, totalPages));
+            }
+
+            displayProperties(currentFiltered, currentPage);
+            document.getElementById('properties-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ======= VIEW TOGGLE =======
+        function changeView(view) {
+            currentView = view;
+            document.querySelectorAll('.view-options button').forEach(btn => btn.classList.remove('active'));
+            if (view === 'grid') {
+                document.querySelector('.view-options button:first-child').classList.add('active');
+            } else {
+                document.querySelector('.view-options button:last-child').classList.add('active');
+            }
+            displayProperties(currentFiltered, currentPage);
+        }
+
+        // ======= BỘ LỌC =======
+        function filterProperties() {
+            const typeValue = document.getElementById('filter-type').value;
+            const provinceValue = document.getElementById('filter-province').value;
+            const districtValue = document.getElementById('filter-district').value;
+            const priceValue = document.getElementById('filter-price').value;
+
+            currentFiltered = propertiesData.filter(item => {
+                const matchType = typeValue === 'all' || item.type === typeValue;
+                const matchProvince = provinceValue === 'all' || item.location === provinceValue;
+                const matchDistrict = districtValue === 'all' || item.district === districtValue;
+                const matchPrice = priceValue === 'all' || item.priceRange === priceValue;
+                return matchType && matchProvince && matchDistrict && matchPrice;
             });
 
-            displayProperties(filtered);
-            
-            // Cuộn mượt mà xuống danh sách kết quả sau khi bấm lọc
-            document.getElementById("properties-section").scrollIntoView({ behavior: 'smooth' });
+            currentPage = 1;
+            displayProperties(currentFiltered, currentPage);
+            document.getElementById('properties-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Tự động hiển thị toàn bộ 30 sản phẩm khi vừa tải trang xong
+        // ======= POPUP CHI TIẾT NÂNG CAO =======
+        function openDetails(id) {
+            const product = propertiesData.find(item => item.id === id);
+            if (!product) return;
+
+            const typeLabel = product.type === 'apartment' ? 'Căn hộ' : product.type === 'villa' ? 'Biệt thự' : 'Đất nền';
+            const provinceNames = { hanoi: 'Hà Nội', hcm: 'TP. Hồ Chí Minh', danang: 'Đà Nẵng', haiphong: 'Hải Phòng', 
+                                   cantho: 'Cần Thơ', binhduong: 'Bình Dương', dongnai: 'Đồng Nai', baria: 'Bà Rịa - Vũng Tàu',
+                                   quangninh: 'Quảng Ninh', nhatrang: 'Khánh Hòa' };
+
+            document.getElementById('modal-img').src = product.img;
+            document.getElementById('modal-price').innerHTML = `${product.price} <span class="price-detail">/ căn</span>`;
+            document.getElementById('modal-title').textContent = product.title;
+            
+            const badgeEl = document.getElementById('modal-badge');
+            badgeEl.textContent = product.badgeText;
+            badgeEl.className = 'modal-badge ' + product.badge;
+            
+            document.getElementById('modal-location').innerHTML = `<i class="fas fa-map-pin" style="color: var(--secondary);"></i> ${product.district}, ${provinceNames[product.location] || product.location}`;
+            document.getElementById('modal-space').textContent = product.space;
+            document.getElementById('modal-bed').textContent = product.bed;
+            document.getElementById('modal-bath').textContent = product.bath;
+            document.getElementById('modal-type').textContent = typeLabel;
+            document.getElementById('modal-desc').textContent = product.desc;
+
+            document.getElementById('property-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDetails() {
+            document.getElementById('property-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Click outside modal to close
+        document.getElementById('property-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeDetails();
+        });
+
+        // ======= WISHLIST =======
+        function toggleWishlist(id) {
+            let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            const product = propertiesData.find(item => item.id === id);
+            
+            if (wishlist.includes(id)) {
+                wishlist = wishlist.filter(item => item !== id);
+                showToast('Đã xóa "' + product.title + '" khỏi yêu thích', 'info');
+            } else {
+                wishlist.push(id);
+                showToast('Đã thêm "' + product.title + '" vào yêu thích', 'success');
+            }
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            displayProperties(currentFiltered, currentPage);
+        }
+
+        // ======= FORM NHẬN BÁO GIÁ TRONG POPUP =======
+        function handlePriceRequest(e) {
+            e.preventDefault();
+            const form = e.target;
+            const name = form.querySelector('input[type="text"]').value;
+            const phone = form.querySelector('input[type="tel"]').value;
+            const project = document.getElementById('modal-title').textContent;
+            
+            // Hiển thị thông báo thành công với tên khách hàng
+            showToast('📋 Yêu cầu báo giá của ' + name + ' đã được gửi! Chuyên viên sẽ liên hệ trong 24h.', 'success');
+            
+            // Reset form
+            form.reset();
+            
+            // Đóng modal sau 2 giây
+            setTimeout(() => {
+                closeDetails();
+            }, 2000);
+        }
+
+        // ======= FORM LIÊN HỆ =======
+        function handleContactForm(e) {
+            e.preventDefault();
+            const name = e.target.querySelector('input[type="text"]').value;
+            showToast('Cảm ơn ' + name + '! Chúng tôi sẽ gửi tài liệu trong 24h tới.', 'success');
+            e.target.reset();
+        }
+
+        // ======= SCROLL TO CONTACT =======
+        function scrollToContact() {
+            document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ======= TOAST =======
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = toast.querySelector('.toast-icon');
+            const content = toast.querySelector('.toast-content p');
+
+            icon.className = 'toast-icon ' + type;
+            if (type === 'success') {
+                icon.innerHTML = '<i class="fas fa-check"></i>';
+                toast.querySelector('h4').textContent = '✅ Thành công!';
+            } else if (type === 'info') {
+                icon.innerHTML = '<i class="fas fa-info"></i>';
+                toast.querySelector('h4').textContent = '📌 Thông báo';
+            } else {
+                icon.innerHTML = '<i class="fas fa-exclamation"></i>';
+                toast.querySelector('h4').textContent = '⚠️ Cảnh báo';
+            }
+
+            content.textContent = message;
+            toast.classList.add('show');
+
+            clearTimeout(toast.timeout);
+            toast.timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // ======= MOBILE MENU =======
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        // ======= KEYBOARD SHORTCUTS =======
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (document.getElementById('property-modal').style.display === 'flex') {
+                    closeDetails();
+                }
+            }
+        });
+
+        // ======= INIT =======
         window.onload = function() {
-            displayProperties(propertiesData);
+            updateDistricts();
+            currentFiltered = [...propertiesData];
+            displayProperties(currentFiltered, 1);
+            
+            const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+            if (wishlist.length > 0) {
+                displayProperties(currentFiltered, currentPage);
+            }
         };
     </script>
 </body>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landmark Realty | 30+ Dự Án Bất Động Sản Cao Cấp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f6f9;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f2b46;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #c5a880;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links li {
+            margin-left: 30px;
+        }
+        .nav-links a {
+            font-weight: 600;
+            font-size: 14px;
+            color: #0f2b46;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #c5a880;
+        }
+        .btn-contact-nav {
+            background-color: #0f2b46;
+            color: #fff !important;
+            padding: 10px 22px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .btn-contact-nav:hover {
+            background-color: #c5a880;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(15, 43, 70, 0.75), rgba(15, 43, 70, 0.75)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 55vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+        .hero h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            font-weight: 300;
+            color: #e0e6ed;
+        }
+
+        /* BỘ LỌC TÌM KIẾM THỜI GIAN THỰC (REAL-TIME FILTER) */
+        .search-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr) auto;
+            gap: 15px;
+        }
+        .search-box select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+            background-color: #fff;
+            color: #333;
+        }
+        .search-box button {
+            background-color: #c5a880;
+            color: #fff;
+            border: none;
+            padding: 0 35px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background 0.3s;
+        }
+        .search-box button:hover {
+            background-color: #0f2b46;
+        }
+
+        /* --- PROPERTIES SECTION --- */
+        .properties {
+            padding: 70px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .section-title h2 {
+            font-size: 32px;
+            color: #0f2b46;
+            margin-bottom: 8px;
+        }
+        .section-title p {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        .section-title .bar {
+            width: 60px;
+            height: 3px;
+            background-color: #c5a880;
+            margin: 0 auto;
+        }
+
+        /* Số lượng tìm thấy */
+        .results-count {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* Grid hiển thị 30 sản phẩm */
+        .grid-properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+        }
+        .property-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .property-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        .property-img {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+            background-color: #e5e5e5;
+        }
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .property-card:hover .property-img img {
+            transform: scale(1.08);
+        }
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #fff;
+            padding: 5px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        .badge.open { background-color: #2ecc71; }
+        .badge.soon { background-color: #e67e22; }
+        .badge.hot { background-color: #e74c3c; }
+        .badge.rent { background-color: #3498db; }
+
+        .property-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .price {
+            color: #c5a880;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .property-content h3 {
+            font-size: 18px;
+            color: #0f2b46;
+            margin-bottom: 12px;
+            height: 54px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .location {
+            color: #666;
+            font-size: 13.5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #edf2f7;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #555;
+            margin-top: auto;
+        }
+        .btn-view {
+            display: block;
+            text-align: center;
+            background-color: #0f2b46;
+            color: #fff;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .btn-view:hover {
+            background-color: #c5a880;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            background-color: #0f2b46;
+            color: #fff;
+            padding: 80px 0;
+        }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .contact-info p {
+            color: #a0b2c6;
+            margin-bottom: 35px;
+            font-size: 16px;
+        }
+        .info-item {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .info-item strong {
+            color: #c5a880;
+            display: inline-block;
+            width: 120px;
+        }
+        .contact-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+        }
+        .contact-form h3 {
+            color: #0f2b46;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            outline: none;
+            font-size: 14px;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #c5a880;
+        }
+        .btn-submit {
+            background-color: #c5a880;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #0f2b46;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #091929;
+            color: #a0b2c6;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #142d44;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .search-box { grid-template-columns: 1fr; gap: 10px; }
+            .hero { height: auto; padding: 60px 20px; }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+        }
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .grid-properties { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <h1>LANDMARK<span>REALTY</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Trang Chủ</a></li>
+                <li><a href="#properties-section">Danh Sách Dự Án</a></li>
+                <li><a href="#contact">Liên Hệ</a></li>
+                <li><a href="#contact" class="btn-contact-nav">Nhận Báo Giá Tổng Thể</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- BANNER & LIVE FILTER -->
+    <section class="hero">
+        <h2>Hệ Thống Phân Phối BĐS Toàn Quốc</h2>
+        <p>Khám phá giỏ hàng 30+ dự án căn hộ, biệt thự và đất nền tiềm năng nhất</p>
+        
+        <div class="search-box">
+            <select id="filter-type">
+                <option value="all">Tất cả Loại Bất Động Sản</option>
+                <option value="apartment">Căn hộ chung cư</option>
+                <option value="villa">Biệt thự liền kề</option>
+                <option value="land">Đất nền dự án</option>
+            </select>
+            <select id="filter-location">
+                <option value="all">Tất cả Khu vực</option>
+                <option value="hanoi">Hà Nội</option>
+                <option value="hcm">TP. Hồ Chí Minh</option>
+                <option value="danang">Đà Nẵng</option>
+            </select>
+            <select id="filter-price">
+                <option value="all">Tất cả Mức giá</option>
+                <option value="low">Dưới 3 Tỷ</option>
+                <option value="mid">3 - 8 Tỷ</option>
+                <option value="high">Trên 8 Tỷ</option>
+            </select>
+            <button onclick="filterProperties()">Lọc Kết Quả</button>
+        </div>
+    </section>
+
+    <!-- DANH SÁCH 30 SẢN PHẨM CHI TIẾT -->
+    <section class="properties" id="properties-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Danh Sách Dự Án Chi Tiết</h2>
+                <p>Thông tin cập nhật chính xác, bảng giá gốc từ chủ đầu tư</p>
+                <div class="bar"></div>
+            </div>
+
+            <div class="results-count" id="count-text">Hiển thị tất cả 30 dự án</div>
+
+            <div class="grid-properties" id="properties-grid">
+                <!-- Javascript sẽ tự động render 30 sản phẩm ở đây để code HTML sạch gọn và chuyên nghiệp -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM LIÊN HỆ & TƯ VẤN -->
+    <section class="contact-section" id="contact">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h2>Hỗ Trợ Tư Vấn & Xem Nhà Mẫu</h2>
+                <p>Quý khách hàng quan tâm đến bất kỳ dự án nào trong hệ thống, vui lòng để lại thông tin. Đội ngũ chuyên viên tư vấn sẽ gửi trọn bộ tài liệu gồm: Mặt bằng chi tiết, chính sách chiết khấu và bảng tính dòng tiền đầu tư.</p>
+                <div class="info-item"><strong>Hotline:</strong> 1900 88xx (Hỗ trợ 24/7)</div>
+                <div class="info-item"><strong>Email:</strong> tưvan@landmarkrealty.vn</div>
+                <div class="info-item"><strong>Hà Nội:</strong> Vinhomes Ocean Park, Gia Lâm, Hà Nội</div>
+                <div class="info-item"><strong>TP.HCM:</strong> Khu đô thị Sala, Quận 2, TP. Thủ Đức</div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Yêu Cầu Thông Tin Dự Án</h3>
+                <form onsubmit="event.preventDefault(); alert('Hệ thống đã ghi nhận thành công! Chuyên viên phụ trách dự án này sẽ gọi lại hỗ trợ anh/chị ngay lập tức.');">
+                    <div class="form-group">
+                        <input type="text" placeholder="Họ và tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Số điện thoại nhận bảng giá" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="Nhập tên dự án bạn muốn nhận thông tin hoặc đặt lịch đi xem thực tế..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Nhận Tài Liệu & Báo Giá Toàn Bộ</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Landmark Realty. Toàn bộ thông tin dự án được kiểm duyệt chính xác.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: QUẢN LÝ VÀ BỘ LỌC 30 SẢN PHẨM CHUYÊN NGHIỆP -->
+    <script>
+        // Cơ sở dữ liệu 30 dự án chi tiết thực tế
+        const propertiesData = [
+            // CĂN HỘ CHUNG CƯ (10 căn)
+            { id: 1, type: "apartment", location: "hcm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "4.2 Tỷ", title: "Căn Hộ Cao Cấp Vinhomes Grand Park", locText: "Quận 9, TP. Hồ Chí Minh", space: "72 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=500&q=80" },
+            { id: 2, type: "apartment", location: "hanoi", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "5.5 Tỷ", title: "Chung Cư Cao Cấp Masteri West Heights", locText: "Nam Từ Liêm, Hà Nội", space: "80 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" },
+            { id: 3, type: "apartment", location: "danang", priceRange: "mid", badge: "soon", badgeText: "Sắp Ra Mắt", price: "3.8 Tỷ", title: "Căn Hộ Cận Biển The Filmore Da Nang", locText: "Hải Châu, Đà Nẵng", space: "65 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" },
+            { id: 4, type: "apartment", location: "hcm", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "12 Tỷ", title: "Căn Hộ Hạng Sang Empire City Thủ Thiêm", locText: "Quận 2, TP. Hồ Chí Minh", space: "98 m²", bed: "3 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80" },
+            { id: 5, type: "apartment", location: "hanoi", priceRange: "low", badge: "rent", badgeText: "Cho Thuê", price: "2.8 Tỷ", title: "Căn Hộ Studio Sun Grand City", locText: "Tây Hồ, Hà Nội", space: "45 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=500&q=80" },
+            { id: 6, type: "apartment", location: "hcm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "6.1 Tỷ", title: "Chung Cư Cao Cấp Sunrise City", locText: "Quận 7, TP. Hồ Chí Minh", space: "85 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=500&q=80" },
+            { id: 7, type: "apartment", location: "hanoi", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "4.9 Tỷ", title: "Căn Hộ The Matrix One Mỹ Đình", locText: "Cầu Giấy, Hà Nội", space: "87 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=500&q=80" },
+            { id: 8, type: "apartment", location: "danang", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.5 Tỷ", title: "Chung Cư Mường Thanh Sơn Trà Vị Trí Đẹp", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "60 m²", bed: "2 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80" },
+            { id: 9, type: "apartment", location: "hcm", priceRange: "high", badge: "soon", badgeText: "Giới Hạn", price: "18 Tỷ", title: "Sky Villa Serenity Sky Villas Luxury", locText: "Quận 3, TP. Hồ Chí Minh", space: "150 m²", bed: "3 PN", bath: "3 WC", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" },
+            { id: 10, type: "apartment", location: "hanoi", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.9 Tỷ", title: "Căn Hộ Thông Minh Vinhomes Smart City", locText: "Nam Từ Liêm, Hà Nội", space: "63 m²", bed: "2 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=500&q=80" },
+
+            // BIỆT THỰ LIỀN KỀ (10 căn)
+            { id: 11, type: "villa", location: "hanoi", priceRange: "high", badge: "hot", badgeText: "Hot", price: "25 Tỷ", title: "Biệt Thự Vinhomes Riverside Hoa Sữa", locText: "Long Biên, Hà Nội", space: "280 m²", bed: "5 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=500&q=80" },
+            { id: 12, type: "villa", location: "hcm", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "32 Tỷ", title: "Biệt Thự Ven Sông Chateau Phú Mỹ Hưng", locText: "Quận 7, TP. Hồ Chí Minh", space: "310 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=500&q=80" },
+            { id: 13, type: "villa", location: "danang", priceRange: "high", badge: "soon", badgeText: "Sắp Ra Mắt", price: "19 Tỷ", title: "Biệt Thự Nghỉ Dưỡng Regal One River", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "300 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=500&q=80" },
+            { id: 14, type: "villa", location: "hanoi", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "14 Tỷ", title: "Liền Kề Gamuda Gardens View Công Viên", locText: "Hoàng Mai, Hà Nội", space: "120 m²", bed: "3 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=500&q=80" },
+            { id: 15, type: "villa", location: "hcm", priceRange: "high", badge: "hot", badgeText: "Hiếm", price: "45 Tỷ", title: "Dinh Thự The Riviera Cove VIP", locText: "Quận 9, TP. Hồ Chí Minh", space: "500 m²", bed: "5 PN", bath: "6 WC", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=500&q=80" },
+            { id: 16, type: "villa", location: "danang", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "16 Tỷ", title: "Biệt Thự Sân Golf Euro Village 2", locText: "Cẩm Lệ, Đà Nẵng", space: "250 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=500&q=80" },
+            { id: 17, type: "villa", location: "hanoi", priceRange: "high", badge: "rent", badgeText: "Đang Thuê", price: "21 Tỷ", title: "Biệt Thự Đơn Lập Ciputra Khu K", locText: "Tây Hồ, Hà Nội", space: "320 m²", bed: "5 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500&q=80" },
+            { id: 18, type: "villa", location: "hcm", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "15 Tỷ", title: "Nhà Phố Thương Mại Verosa Park Khang Điền", locText: "Quận 9, TP. Hồ Chí Minh", space: "140 m²", bed: "3 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" },
+            { id: 19, type: "villa", location: "hanoi", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "7.8 Tỷ", title: "Shophouse Liền Kề Hinode Royal Park", locText: "Hoài Đức, Hà Nội", space: "100 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=500&q=80" },
+            { id: 20, type: "villa", location: "danang", priceRange: "high", badge: "hot", badgeText: "Hot", price: "28 Tỷ", title: "Biệt Thự Furama Resort Mặt Biển Trường Sa", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "400 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=500&q=80" },
+
+            // ĐẤT NỀN DỰ ÁN (10 căn)
+            { id: 21, type: "land", location: "danang", priceRange: "mid", badge: "open", badgeText: "Sổ Đỏ Sẵn", price: "4.5 Tỷ", title: "Đất Nền Ven Biển Nam Hòa Xuân Giá Tốt", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "100 m²", bed: "Đất nền", bath: "Thổ cư 100%", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=500&q=80" },
+            { id: 22, type: "land", location: "hanoi", priceRange: "mid", badge: "hot", badgeText: "Tiềm Năng", price: "6.2 Tỷ", title: "Đất Nền Lô Góc Khu Đô Thị Thanh Hà", locText: "Hà Đông, Hà Nội", space: "125 m²", bed: "Đất nền", bath: "Sổ đỏ riêng", img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80" },
+            { id: 23, type: "land", location: "hcm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "7.5 Tỷ", title: "Đất Nền Sổ Đỏ KDC Cát Lái Quận 2", locText: "Quận 2, TP. Hồ Chí Minh", space: "110 m²", bed: "Đất nền", bath: "Xây tự do", img: "https://images.unsplash.com/photo-1444653389962-8149286c578a?auto=format&fit=crop&w=500&q=80" },
+            { id: 24, type: "land", location: "danang", priceRange: "low", badge: "open", badgeText: "Giá Rẻ", price: "2.1 Tỷ", title: "Đất Nền Dự Án FPT City Đà Nẵng Giá Đầu Tư", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "90 m²", bed: "Đất nền", bath: "Hạ tầng hoàn thiện", img: "https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=500&q=80" },
+            { id: 25, type: "land", location: "hanoi", priceRange: "mid", badge: "soon", badgeText: "Suất Ngoại Giao", price: "5.8 Tỷ", title: "Đất Nền Khu Đô Thị Mới Nam An Khánh", locText: "Hoài Đức, Hà Nội", space: "150 m²", bed: "Đất nền", bath: "Đã phân lô", img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=500&q=80" },
+            { id: 26, type: "land", location: "hcm", priceRange: "high", badge: "hot", badgeText: "Vị Trí Đắc Địa", price: "13.5 Tỷ", title: "Đất Nền Mặt Tiền Đường Nguyễn Văn Linh", locText: "Quận 7, TP. Hồ Chí Minh", space: "200 m²", bed: "Đất nền", bath: "Sổ hồng", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80" },
+            { id: 27, type: "land", location: "danang", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.9 Tỷ", title: "Đất Nền Shophouse Vịnh An Hòa", locText: "Núi Thành, Đà Nẵng Nam", space: "105 m²", bed: "Đất nền", bath: "Mặt tiền 6m", img: "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=500&q=80" },
+            { id: 28, type: "land", location: "hanoi", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "9 Tỷ", title: "Đất Nền Đô Thị Vệ Tinh Hòa Lạc Lô Góc", locText: "Thạch Thất, Hà Nội", space: "300 m²", bed: "Đất nền", bath: "Full Thổ Cư", img: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=500&q=80" },
+            { id: 29, type: "land", location: "hcm", priceRange: "low", badge: "soon", badgeText: "Giai Đoạn 1", price: "2.7 Tỷ", title: "Đất Nền Dự Án KDC Nhà Bè Giá Gốc", locText: "Nhà Bè, TP. Hồ Chí Minh", space: "80 m²", bed: "Đất nền", bath: "Sổ đỏ riêng", img: "https://images.unsplash.com/photo-1472214222541-d510753a4707?auto=format&fit=crop&w=500&q=80" },
+            { id: 30, type: "land", location: "danang", priceRange: "mid", badge: "hot", badgeText: "Đầu Tư Tốt", price: "5.1 Tỷ", title: "Đất Nền Mặt Sông Cổ Cò Sinh Thái", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "150 m²", bed: "Đất nền", bath: "Sổ đỏ trao tay", img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" }
+        ];
+
+        // Hàm render hiển thị các thẻ dự án ra HTML
+        function displayProperties(products) {
+            const grid = document.getElementById("properties-grid");
+            const countText = document.getElementById("count-text");
+            
+            grid.innerHTML = ""; // Xoá nội dung cũ
+            countText.innerText = `Tìm thấy ${products.length} dự án phù hợp`;
+
+            if (products.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:50px 0; font-size:18px; color:#777;">Không tìm thấy dự án nào khớp với tiêu chí lọc của bạn. Vui lòng chọn lại!</div>`;
+                return;
+            }
+
+            products.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "property-card";
+                card.innerHTML = `
+                    <div class="property-img">
+                        <span class="badge ${item.badge}">${item.badgeText}</span>
+                        <img src="${item.img}" alt="${item.title}">
+                    </div>
+                    <div class="property-content">
+                        <div class="price">${item.price}</div>
+                        <h3>${item.title}</h3>
+                        <p class="location">📍 ${item.locText}</p>
+                        <div class="details">
+                            <span>📐 ${item.space}</span>
+                            <span>🛏️ ${item.bed}</span>
+                            <span>🛁 ${item.bath}</span>
+                        </div>
+                        <a href="#contact" class="btn-view">Yêu Cầu Báo Giá & Xem Thực Tế</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Hàm xử lý việc lọc dữ liệu khi click nút tìm kiếm
+        function filterProperties() {
+            const typeValue = document.getElementById("filter-type").value;
+            const locValue = document.getElementById("filter-location").value;
+            const priceValue = document.getElementById("filter-price").value;
+
+            const filtered = propertiesData.filter(item => {
+                const matchType = (typeValue === "all" || item.type === typeValue);
+                const matchLoc = (locValue === "all" || item.location === locValue);
+                const matchPrice = (priceValue === "all" || item.priceRange === priceValue);
+                return matchType && matchLoc && matchPrice;
+            });
+
+            displayProperties(filtered);
+            
+            // Cuộn mượt mà xuống danh sách kết quả sau khi bấm lọc
+            document.getElementById("properties-section").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Tự động hiển thị toàn bộ 30 sản phẩm khi vừa tải trang xong
+        window.onload = function() {
+            displayProperties(propertiesData);
+        };
+    </script>
+</body>
+</html>

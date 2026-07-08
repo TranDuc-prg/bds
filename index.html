@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landmark Realty - Hệ Thống Phân Phối BĐS Toàn Quốc</title>
+    <title>Trần Tuấn BDS - Mua Bán Chung Cư & Nhà Đất Hà Nội</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        /* --- RESET & GLOBAL STYLES --- */
+        /* ==================== RESET & GLOBAL ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         :root {
             --primary: #0f2b46;
+            --primary-light: #1a3d5c;
             --secondary: #c5a880;
             --secondary-hover: #b3946a;
             --light-bg: #f4f6f9;
             --text-dark: #1a2332;
             --text-gray: #6b7a8a;
-            --shadow: 0 4px 20px rgba(0,0,0,0.06);
-            --shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
-            --border-radius: 10px;
+            --text-light: #8a9aa8;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --zalo-color: #0068ff;
             --phone-color: #2ecc71;
+            --gradient-gold: linear-gradient(135deg, #c5a880, #d4b896);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
             color: var(--text-dark);
@@ -46,53 +52,52 @@
             padding: 0 15px;
         }
 
-        /* --- SCROLLBAR --- */
+        /* ==================== SCROLLBAR ==================== */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--light-bg); }
         ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--secondary-hover); }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* ==================== HEADER ==================== */
         header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
             position: sticky;
             top: 0;
             z-index: 999;
-            backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.95);
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 14px 0;
         }
 
         .logo h1 {
             font-size: 26px;
             font-weight: 700;
             color: var(--primary);
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
-        .logo span { color: var(--secondary); }
+        .logo h1 span { color: var(--secondary); }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
-        .nav-links li { margin-left: 25px; }
+        .nav-links li { margin-left: 20px; }
 
         .nav-links a {
             font-weight: 600;
             font-size: 14px;
             color: var(--primary);
             transition: var(--transition);
+            padding: 6px 0;
             position: relative;
-            padding: 5px 0;
         }
 
         .nav-links a::after {
@@ -101,9 +106,10 @@
             bottom: -2px;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 2.5px;
             background: var(--secondary);
             transition: var(--transition);
+            border-radius: 2px;
         }
 
         .nav-links a:hover::after,
@@ -129,7 +135,7 @@
         .btn-contact-nav:hover {
             background: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(197, 168, 128, 0.3);
+            box-shadow: 0 8px 25px rgba(197, 168, 128, 0.35);
         }
 
         .menu-toggle {
@@ -139,18 +145,18 @@
             color: var(--primary);
         }
 
-        /* --- HERO SECTION --- */
+        /* ==================== HERO ==================== */
         .hero {
-            background: linear-gradient(135deg, rgba(15, 43, 70, 0.85), rgba(15, 43, 70, 0.7)),
-                        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(15, 43, 70, 0.88), rgba(15, 43, 70, 0.75)),
+                url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            min-height: 58vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: #fff;
-            padding: 60px 20px;
+            padding: 60px 20px 40px;
             position: relative;
         }
 
@@ -160,7 +166,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px;
+            height: 80px;
             background: linear-gradient(to top, var(--light-bg), transparent);
         }
 
@@ -171,15 +177,17 @@
         }
 
         .hero h2 {
-            font-size: 48px;
+            font-size: 44px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             animation: fadeInUp 0.8s ease;
         }
 
+        .hero h2 span { color: var(--secondary); }
+
         .hero p {
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             font-weight: 300;
             color: #d0d8e3;
             animation: fadeInUp 0.8s ease 0.2s both;
@@ -189,13 +197,11 @@
             display: flex;
             justify-content: center;
             gap: 50px;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             animation: fadeInUp 0.8s ease 0.3s both;
         }
 
-        .hero-stats .stat-item {
-            text-align: center;
-        }
+        .hero-stats .stat-item { text-align: center; }
 
         .hero-stats .stat-number {
             font-size: 36px;
@@ -223,32 +229,30 @@
             }
         }
 
-        /* BỘ LỌC TÌM KIẾM NÂNG CAO */
+        /* ==================== SEARCH BOX ==================== */
         .search-box {
             background: #fff;
-            padding: 25px 30px;
+            padding: 22px 28px;
             border-radius: var(--border-radius);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
             width: 100%;
             max-width: 1100px;
             display: grid;
             grid-template-columns: repeat(4, 1fr) auto;
-            gap: 15px;
+            gap: 14px;
             position: relative;
             z-index: 2;
             animation: fadeInUp 0.8s ease 0.4s both;
         }
 
-        .search-box .filter-group {
-            position: relative;
-        }
+        .search-box .filter-group { position: relative; }
 
         .search-box .filter-group::before {
             content: '\f0ac';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
-            left: 15px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
             color: #999;
@@ -258,7 +262,7 @@
 
         .search-box select {
             width: 100%;
-            padding: 14px 20px 14px 40px;
+            padding: 13px 18px 13px 38px;
             border: 2px solid #e8ecf2;
             border-radius: 8px;
             font-size: 14px;
@@ -269,7 +273,7 @@
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7a8a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 15px center;
+            background-position: right 14px center;
         }
 
         .search-box select:focus {
@@ -278,16 +282,11 @@
             box-shadow: 0 0 0 4px rgba(197, 168, 128, 0.1);
         }
 
-        .search-box select:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
         .search-box .btn-search {
             background: var(--secondary);
             color: #fff;
             border: none;
-            padding: 0 35px;
+            padding: 0 32px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
@@ -297,6 +296,7 @@
             align-items: center;
             gap: 10px;
             justify-content: center;
+            white-space: nowrap;
         }
 
         .search-box .btn-search:hover {
@@ -305,40 +305,38 @@
             box-shadow: 0 8px 25px rgba(15, 43, 70, 0.25);
         }
 
-        /* --- PROPERTIES SECTION --- */
+        /* ==================== PROPERTIES ==================== */
         .properties {
-            padding: 70px 0 80px;
+            padding: 60px 0 80px;
             position: relative;
             z-index: 1;
-            margin-top: -50px;
+            margin-top: -40px;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .section-title h2 {
-            font-size: 36px;
+            font-size: 34px;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 700;
         }
 
-        .section-title h2 span {
-            color: var(--secondary);
-        }
+        .section-title h2 span { color: var(--secondary); }
 
         .section-title p {
             color: var(--text-gray);
             font-size: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .section-title .bar {
-            width: 70px;
+            width: 60px;
             height: 4px;
-            background: var(--secondary);
+            background: var(--gradient-gold);
             margin: 0 auto;
             border-radius: 2px;
         }
@@ -385,25 +383,25 @@
             background: rgba(197, 168, 128, 0.08);
         }
 
-        /* Grid sản phẩm */
+        /* ==================== GRID PROPERTIES ==================== */
         .grid-properties {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 28px;
         }
 
-        .grid-properties.grid-view {
-            grid-template-columns: 1fr;
-        }
+        .grid-properties.grid-view { grid-template-columns: 1fr; }
 
-        .grid-properties.grid-view .property-card {
-            flex-direction: row;
-        }
+        .grid-properties.grid-view .property-card { flex-direction: row; }
 
         .grid-properties.grid-view .property-img {
             height: auto;
-            width: 300px;
+            width: 280px;
             flex-shrink: 0;
+        }
+
+        .grid-properties.grid-view .property-img .slider-nav {
+            display: none;
         }
 
         .property-card {
@@ -415,10 +413,11 @@
             display: flex;
             flex-direction: column;
             border: 1px solid #f0f2f5;
+            position: relative;
         }
 
         .property-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
             border-color: var(--secondary);
         }
@@ -430,21 +429,78 @@
             background: #e8ecf2;
         }
 
-        .property-img img {
+        .property-img .img-slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .property-img .img-slider img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
         }
 
-        .property-card:hover .property-img img {
-            transform: scale(1.1);
+        .property-img .slider-nav {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 3;
         }
+
+        .property-img .slider-nav .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .property-img .slider-nav .dot.active {
+            background: var(--secondary);
+            transform: scale(1.2);
+        }
+
+        .property-img .slider-nav .dot:hover {
+            background: var(--secondary);
+        }
+
+        .property-img .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .property-img .slider-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .property-img .slider-arrow.prev { left: 10px; }
+        .property-img .slider-arrow.next { right: 10px; }
 
         .badge {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: 14px;
+            left: 14px;
             color: #fff;
             padding: 5px 16px;
             font-size: 11px;
@@ -453,18 +509,16 @@
             text-transform: uppercase;
             z-index: 2;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         .badge.open { background: linear-gradient(135deg, #2ecc71, #27ae60); }
-        .badge.soon { background: linear-gradient(135deg, #f39c12, #e67e22); }
         .badge.hot { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-        .badge.rent { background: linear-gradient(135deg, #3498db, #2980b9); }
 
         .property-actions {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 14px;
+            right: 14px;
             display: flex;
             gap: 8px;
             z-index: 2;
@@ -475,7 +529,7 @@
             height: 36px;
             border-radius: 50%;
             border: none;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(5px);
             cursor: pointer;
             transition: var(--transition);
@@ -498,7 +552,7 @@
         }
 
         .property-content {
-            padding: 25px;
+            padding: 22px 24px 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -508,7 +562,7 @@
             color: var(--secondary);
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .price .price-unit {
@@ -518,10 +572,10 @@
         }
 
         .property-content h3 {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--primary);
-            margin-bottom: 10px;
-            height: 52px;
+            margin-bottom: 8px;
+            height: 48px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -533,7 +587,7 @@
         .location {
             color: var(--text-gray);
             font-size: 13.5px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .location i {
@@ -545,12 +599,12 @@
             display: flex;
             justify-content: space-between;
             border-top: 1px solid #edf2f7;
-            padding-top: 15px;
+            padding-top: 14px;
             font-size: 13px;
             color: var(--text-gray);
             margin-top: auto;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .details .detail-item {
@@ -571,7 +625,7 @@
             background: var(--primary);
             color: #fff;
             padding: 12px 20px;
-            margin-top: 18px;
+            margin-top: 16px;
             border-radius: 8px;
             font-weight: 600;
             font-size: 14px;
@@ -587,12 +641,12 @@
             box-shadow: 0 8px 25px rgba(197, 168, 128, 0.3);
         }
 
-        /* Pagination */
+        /* ==================== PAGINATION ==================== */
         .pagination {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 50px;
+            margin-top: 45px;
             flex-wrap: wrap;
         }
 
@@ -605,6 +659,7 @@
             transition: var(--transition);
             font-weight: 500;
             color: var(--text-gray);
+            min-width: 44px;
         }
 
         .pagination button:hover,
@@ -615,15 +670,15 @@
         }
 
         .pagination button:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
         }
 
-        /* --- CONTACT SECTION --- */
+        /* ==================== CONTACT SECTION ==================== */
         .contact-section {
             background: var(--primary);
             color: #fff;
-            padding: 80px 0;
+            padding: 70px 0;
             position: relative;
             overflow: hidden;
         }
@@ -649,24 +704,22 @@
         }
 
         .contact-info h2 {
-            font-size: 38px;
-            margin-bottom: 20px;
+            font-size: 36px;
+            margin-bottom: 18px;
             font-weight: 700;
         }
 
-        .contact-info h2 span {
-            color: var(--secondary);
-        }
+        .contact-info h2 span { color: var(--secondary); }
 
         .contact-info p {
             color: #a0b2c6;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             font-size: 16px;
             line-height: 1.8;
         }
 
         .info-item {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -698,32 +751,32 @@
 
         .contact-form {
             background: #fff;
-            padding: 40px 45px;
+            padding: 35px 40px;
             border-radius: var(--border-radius);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-lg);
         }
 
         .contact-form h3 {
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-size: 22px;
         }
 
         .contact-form .form-subtitle {
             color: var(--text-gray);
             font-size: 14px;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 14px 18px;
+            padding: 13px 18px;
             border: 2px solid #e8ecf2;
             border-radius: 8px;
             outline: none;
@@ -742,7 +795,7 @@
 
         .form-group textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 90px;
         }
 
         .form-row {
@@ -755,7 +808,7 @@
             background: var(--secondary);
             color: #fff;
             border: none;
-            padding: 16px;
+            padding: 15px;
             width: 100%;
             font-weight: 600;
             border-radius: 8px;
@@ -774,14 +827,14 @@
             box-shadow: 0 8px 25px rgba(15, 43, 70, 0.3);
         }
 
-        /* --- MODAL NÂNG CAO --- */
+        /* ==================== MODAL - CHI TIẾT SẢN PHẨM ==================== */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.78);
             backdrop-filter: blur(8px);
             display: none;
             justify-content: center;
@@ -793,7 +846,7 @@
         .modal-box {
             background: #fff;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
             max-height: 92vh;
             border-radius: var(--border-radius);
             overflow-y: auto;
@@ -804,7 +857,7 @@
         @keyframes modalIn {
             from {
                 opacity: 0;
-                transform: scale(0.9) translateY(30px);
+                transform: scale(0.92) translateY(30px);
             }
             to {
                 opacity: 1;
@@ -821,14 +874,14 @@
             top: 15px;
             float: right;
             right: 20px;
-            font-size: 28px;
+            font-size: 26px;
             color: #fff;
             cursor: pointer;
-            z-index: 10;
+            z-index: 15;
             font-weight: 300;
-            width: 45px;
-            height: 45px;
-            background: rgba(0,0,0,0.5);
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
             border-radius: 50%;
             display: flex;
@@ -836,7 +889,7 @@
             justify-content: center;
             transition: var(--transition);
             border: none;
-            margin: 15px 20px 0 0;
+            margin: 12px 16px 0 0;
         }
 
         .close-modal:hover {
@@ -844,14 +897,101 @@
             transform: rotate(90deg);
         }
 
-        .modal-img {
+        /* Modal Gallery */
+        .modal-gallery {
+            position: relative;
             width: 100%;
-            height: 420px;
-            object-fit: cover;
+            height: 440px;
+            overflow: hidden;
+            background: #e8ecf2;
         }
 
+        .modal-gallery .gallery-slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-gallery .gallery-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .modal-gallery .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: var(--transition);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-gallery .gallery-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-gallery .gallery-arrow.prev { left: 18px; }
+        .modal-gallery .gallery-arrow.next { right: 18px; }
+
+        .modal-gallery .gallery-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .modal-gallery .gallery-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .modal-gallery .gallery-dots .dot.active {
+            background: var(--secondary);
+            border-color: #fff;
+            transform: scale(1.15);
+        }
+
+        .modal-gallery .gallery-dots .dot:hover {
+            background: var(--secondary);
+        }
+
+        .modal-gallery .gallery-counter {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        /* Modal Body */
         .modal-body {
-            padding: 35px 40px;
+            padding: 30px 38px 35px;
         }
 
         .modal-header {
@@ -860,7 +1000,7 @@
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .modal-price {
@@ -876,7 +1016,7 @@
         }
 
         .modal-badge {
-            padding: 6px 18px;
+            padding: 6px 20px;
             border-radius: 50px;
             color: #fff;
             font-size: 13px;
@@ -885,31 +1025,29 @@
         }
 
         .modal-badge.open { background: #2ecc71; }
-        .modal-badge.soon { background: #f39c12; }
         .modal-badge.hot { background: #e74c3c; }
-        .modal-badge.rent { background: #3498db; }
 
         .modal-title {
-            font-size: 26px;
+            font-size: 24px;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 700;
         }
 
         .modal-location {
             color: var(--text-gray);
             font-size: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .modal-meta-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 14px;
             background: #f8f9fb;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin-bottom: 22px;
         }
 
         .modal-meta-grid .meta-item {
@@ -917,7 +1055,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .modal-meta-grid .meta-item i {
@@ -950,7 +1088,7 @@
         .modal-desc-content {
             color: #555;
             font-size: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             text-align: justify;
             line-height: 1.8;
         }
@@ -959,8 +1097,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 25px;
-            padding: 15px 0;
+            margin-bottom: 22px;
+            padding: 14px 0;
             border-top: 1px solid #edf2f7;
             border-bottom: 1px solid #edf2f7;
         }
@@ -982,26 +1120,27 @@
 
         .modal-investor {
             background: #f8f9fb;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
+            padding: 18px 22px;
+            border-radius: 10px;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 18px;
             flex-wrap: wrap;
         }
 
         .modal-investor .investor-icon {
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             background: var(--primary);
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
+            flex-shrink: 0;
         }
 
         .modal-investor .investor-info h4 {
@@ -1015,18 +1154,16 @@
             font-size: 13px;
         }
 
-        /* ============================================ */
-        /* === MODAL FORM BÁO GIÁ CHI TIẾT === */
-        /* ============================================ */
+        /* Modal Form */
         .modal-form-box {
             background: var(--primary);
             color: #fff;
-            padding: 30px;
+            padding: 28px 30px;
             border-radius: var(--border-radius);
         }
 
         .modal-form-box h4 {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-size: 18px;
             color: #fff;
             font-weight: 600;
@@ -1035,7 +1172,7 @@
         .modal-form-box .form-sub {
             color: #a0b2c6;
             font-size: 14px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .modal-form-grid {
@@ -1047,7 +1184,7 @@
         .modal-form-grid input,
         .modal-form-grid select,
         .modal-form-grid textarea {
-            padding: 12px 16px;
+            padding: 11px 15px;
             border: none;
             border-radius: 6px;
             outline: none;
@@ -1058,7 +1195,7 @@
         .modal-form-grid textarea {
             grid-column: span 2;
             resize: vertical;
-            min-height: 60px;
+            min-height: 56px;
         }
 
         .modal-form-grid .btn-submit-modal {
@@ -1066,7 +1203,7 @@
             background: var(--secondary);
             color: #fff;
             border: none;
-            padding: 14px;
+            padding: 13px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
@@ -1088,7 +1225,7 @@
             background: var(--zalo-color);
             color: #fff;
             border: none;
-            padding: 12px;
+            padding: 11px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
@@ -1111,7 +1248,7 @@
             background: var(--phone-color);
             color: #fff;
             border: none;
-            padding: 12px;
+            padding: 11px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
@@ -1136,7 +1273,7 @@
             gap: 15px;
             color: #a0b2c6;
             font-size: 13px;
-            margin: 5px 0;
+            margin: 4px 0;
         }
 
         .quick-contact-divider::before,
@@ -1144,13 +1281,13 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        /* --- FLOATING SUPPORT BUTTONS --- */
+        /* ==================== FLOATING SUPPORT ==================== */
         .support-floating {
             position: fixed;
-            right: 20px;
+            right: 22px;
             bottom: 120px;
             z-index: 9999;
             display: flex;
@@ -1171,13 +1308,13 @@
         }
 
         .support-btn {
-            width: 60px;
-            height: 60px;
+            width: 58px;
+            height: 58px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
             position: relative;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
             display: flex;
             align-items: center;
@@ -1189,12 +1326,12 @@
 
         .support-btn:hover {
             transform: scale(1.12) translateX(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
         .support-btn .tooltip {
             position: absolute;
-            right: 75px;
+            right: 72px;
             background: #1a2332;
             color: #fff;
             padding: 8px 16px;
@@ -1205,7 +1342,7 @@
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .support-btn .tooltip::after {
@@ -1222,7 +1359,7 @@
         .support-btn:hover .tooltip {
             opacity: 1;
             visibility: visible;
-            right: 80px;
+            right: 76px;
         }
 
         .support-btn.zalo {
@@ -1266,7 +1403,7 @@
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
             }
             70% {
-                box-shadow: 0 0 0 15px rgba(46, 204, 113, 0);
+                box-shadow: 0 0 0 16px rgba(46, 204, 113, 0);
             }
             100% {
                 box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
@@ -1275,14 +1412,14 @@
 
         .support-btn .badge-count {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -4px;
+            right: -4px;
             background: #e74c3c;
             color: #fff;
             font-size: 10px;
             font-weight: 700;
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1291,27 +1428,25 @@
             box-shadow: 0 2px 10px rgba(231, 76, 60, 0.4);
         }
 
-        /* --- TOAST --- */
+        /* ==================== TOAST ==================== */
         .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: #fff;
-            padding: 18px 25px;
+            padding: 16px 22px;
             border-radius: var(--border-radius);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             display: none;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
             z-index: 99999;
             border-left: 4px solid var(--secondary);
             animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            max-width: 400px;
+            max-width: 420px;
         }
 
-        .toast.show {
-            display: flex;
-        }
+        .toast.show { display: flex; }
 
         @keyframes slideInRight {
             from {
@@ -1350,11 +1485,11 @@
             color: var(--text-gray);
         }
 
-        /* --- FOOTER --- */
+        /* ==================== FOOTER ==================== */
         footer {
             background: #091929;
             color: #a0b2c6;
-            padding: 50px 0 30px;
+            padding: 45px 0 25px;
             border-top: 1px solid #142d44;
         }
 
@@ -1362,19 +1497,17 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .footer-brand h3 {
             color: #fff;
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
-        .footer-brand h3 span {
-            color: var(--secondary);
-        }
+        .footer-brand h3 span { color: var(--secondary); }
 
         .footer-brand p {
             font-size: 14px;
@@ -1385,14 +1518,14 @@
         .footer-social {
             display: flex;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 18px;
         }
 
         .footer-social a {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1409,13 +1542,11 @@
         .footer-col h4 {
             color: #fff;
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             font-size: 16px;
         }
 
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
+        .footer-col ul li { margin-bottom: 10px; }
 
         .footer-col ul a {
             font-size: 14px;
@@ -1429,16 +1560,14 @@
 
         .footer-bottom {
             border-top: 1px solid #142d44;
-            padding-top: 25px;
+            padding-top: 22px;
             text-align: center;
             font-size: 14px;
         }
 
-        .footer-bottom strong {
-            color: var(--secondary);
-        }
+        .footer-bottom strong { color: var(--secondary); }
 
-        /* --- RESPONSIVE --- */
+        /* ==================== RESPONSIVE ==================== */
         @media (max-width: 1024px) {
             .search-box {
                 grid-template-columns: 1fr 1fr;
@@ -1473,51 +1602,60 @@
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                padding: 20px 0;
+                padding: 18px 0;
                 background: #fff;
                 position: absolute;
-                top: 70px;
+                top: 68px;
                 left: 0;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
             }
 
-            .nav-links.open {
-                display: flex;
-            }
+            .nav-links.open { display: flex; }
 
-            .nav-links li {
-                margin: 10px 0;
-            }
+            .nav-links li { margin: 8px 0; }
 
-            .hero h2 { font-size: 32px; }
-            .hero-stats { flex-wrap: wrap; gap: 25px; }
+            .hero h2 { font-size: 30px; }
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
 
             .search-box {
                 grid-template-columns: 1fr;
-                padding: 20px;
+                padding: 18px;
             }
             .search-box .btn-search {
                 grid-column: span 1;
-                padding: 16px;
+                padding: 15px;
             }
 
             .contact-wrapper {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 35px;
             }
 
-            .contact-form { padding: 25px; }
+            .contact-form { padding: 22px 25px; }
             .form-row { grid-template-columns: 1fr; }
 
             .grid-properties {
                 grid-template-columns: 1fr;
             }
 
-            .modal-box { max-width: 100%; margin: 10px; }
-            .modal-body { padding: 20px; }
-            .modal-img { height: 220px; }
-            .modal-meta-grid { grid-template-columns: repeat(2, 1fr); }
-            .modal-form-grid { grid-template-columns: 1fr; }
+            .modal-box {
+                max-width: 100%;
+                margin: 8px;
+                border-radius: var(--border-radius);
+            }
+            .modal-body { padding: 18px 20px 22px; }
+            .modal-gallery { height: 280px; }
+            .modal-meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 14px;
+            }
+            .modal-form-grid {
+                grid-template-columns: 1fr;
+            }
             .modal-form-grid textarea,
             .modal-form-grid .btn-submit-modal,
             .modal-form-grid .btn-zalo-quick,
@@ -1525,10 +1663,11 @@
             .quick-contact-divider {
                 grid-column: span 1;
             }
+            .modal-header { flex-direction: column; }
 
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 28px;
             }
 
             .grid-properties.grid-view .property-card {
@@ -1538,6 +1677,9 @@
                 width: 100%;
                 height: 250px;
             }
+            .grid-properties.grid-view .property-img .slider-nav {
+                display: flex;
+            }
 
             .results-header {
                 flex-direction: column;
@@ -1545,20 +1687,18 @@
             }
 
             .support-floating {
-                right: 15px;
+                right: 12px;
                 bottom: 100px;
                 gap: 10px;
             }
 
             .support-btn {
-                width: 52px;
-                height: 52px;
+                width: 50px;
+                height: 50px;
                 font-size: 22px;
             }
 
-            .support-btn .tooltip {
-                display: none;
-            }
+            .support-btn .tooltip { display: none; }
 
             .support-btn .badge-count {
                 width: 18px;
@@ -1568,15 +1708,21 @@
         }
 
         @media (max-width: 480px) {
-            .hero h2 { font-size: 26px; }
+            .hero h2 { font-size: 24px; }
             .hero p { font-size: 15px; }
-            .hero-stats .stat-number { font-size: 28px; }
-            .section-title h2 { font-size: 28px; }
-            .contact-info h2 { font-size: 28px; }
-            .modal-title { font-size: 20px; }
+            .hero-stats .stat-number { font-size: 26px; }
+            .section-title h2 { font-size: 26px; }
+            .contact-info h2 { font-size: 26px; }
+            .modal-title { font-size: 19px; }
             .modal-price { font-size: 22px; }
-            .modal-meta-grid { grid-template-columns: 1fr 1fr; }
-            .modal-form-grid { grid-template-columns: 1fr; }
+            .modal-meta-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .modal-gallery { height: 220px; }
+            .modal-form-grid {
+                grid-template-columns: 1fr;
+            }
             .modal-form-grid textarea,
             .modal-form-grid .btn-submit-modal,
             .modal-form-grid .btn-zalo-quick,
@@ -1587,13 +1733,13 @@
 
             .support-floating {
                 right: 10px;
-                bottom: 90px;
+                bottom: 85px;
                 gap: 8px;
             }
 
             .support-btn {
-                width: 46px;
-                height: 46px;
+                width: 44px;
+                height: 44px;
                 font-size: 18px;
             }
         }
@@ -1606,14 +1752,14 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <h1>LANDMARK<span>REALTY</span></h1>
+                    <h1>Trần Tuấn <span>BDS</span></h1>
                 </div>
                 <div class="menu-toggle" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
                 </div>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#" class="active">Trang Chủ</a></li>
-                    <li><a href="#properties-section">Danh Sách Dự Án</a></li>
+                    <li><a href="#properties-section">Danh Sách BĐS</a></li>
                     <li><a href="#contact-section">Liên Hệ</a></li>
                     <li><a href="#" class="btn-contact-nav" onclick="scrollToContact()">Nhận Báo Giá</a></li>
                 </ul>
@@ -1624,60 +1770,69 @@
     <!-- ==================== HERO ==================== -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Hệ Thống Phân Phối BĐS Toàn Quốc</h2>
-            <p>Khám phá giỏ hàng 30+ dự án căn hộ, biệt thự và đất nền tiềm năng nhất</p>
+            <h2>Mua Bán <span>Chung Cư &amp; Nhà Đất</span> Hà Nội</h2>
+            <p>Hàng trăm căn hộ chung cư, nhà đất thổ cư giá tốt nhất tại các quận trung tâm Hà Nội</p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number">30+</span>
-                    <span class="stat-label">Dự Án Cao Cấp</span>
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">BĐS Hà Nội</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">15+</span>
+                    <span class="stat-number">10+</span>
                     <span class="stat-label">Năm Kinh Nghiệm</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">500+</span>
+                    <span class="stat-number">200+</span>
                     <span class="stat-label">Khách Hàng Hài Lòng</span>
                 </div>
             </div>
         </div>
 
-        <!-- Bộ lọc nâng cao -->
+        <!-- Search Box -->
         <div class="search-box">
             <div class="filter-group">
                 <select id="filter-type">
                     <option value="all">Tất cả Loại BĐS</option>
-                    <option value="apartment">Căn hộ chung cư</option>
-                    <option value="villa">Biệt thự liền kề</option>
-                    <option value="land">Đất nền dự án</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <select id="filter-province" onchange="updateDistricts()">
-                    <option value="all">Tất cả Tỉnh/TP</option>
-                    <option value="hanoi">Hà Nội</option>
-                    <option value="hcm">TP. Hồ Chí Minh</option>
-                    <option value="danang">Đà Nẵng</option>
-                    <option value="haiphong">Hải Phòng</option>
-                    <option value="cantho">Cần Thơ</option>
-                    <option value="binhduong">Bình Dương</option>
-                    <option value="dongnai">Đồng Nai</option>
-                    <option value="baria">Bà Rịa - Vũng Tàu</option>
-                    <option value="quangninh">Quảng Ninh</option>
-                    <option value="nhatrang">Khánh Hòa</option>
+                    <option value="apartment">Chung cư</option>
+                    <option value="land">Nhà đất thổ cư</option>
                 </select>
             </div>
             <div class="filter-group">
                 <select id="filter-district">
                     <option value="all">Tất cả Quận/Huyện</option>
+                    <option value="Ba Đình">Ba Đình</option>
+                    <option value="Cầu Giấy">Cầu Giấy</option>
+                    <option value="Đống Đa">Đống Đa</option>
+                    <option value="Hai Bà Trưng">Hai Bà Trưng</option>
+                    <option value="Hoàn Kiếm">Hoàn Kiếm</option>
+                    <option value="Hoàng Mai">Hoàng Mai</option>
+                    <option value="Long Biên">Long Biên</option>
+                    <option value="Nam Từ Liêm">Nam Từ Liêm</option>
+                    <option value="Tây Hồ">Tây Hồ</option>
+                    <option value="Thanh Xuân">Thanh Xuân</option>
+                    <option value="Bắc Từ Liêm">Bắc Từ Liêm</option>
+                    <option value="Gia Lâm">Gia Lâm</option>
+                    <option value="Đông Anh">Đông Anh</option>
+                    <option value="Sóc Sơn">Sóc Sơn</option>
+                    <option value="Hoài Đức">Hoài Đức</option>
+                    <option value="Thanh Trì">Thanh Trì</option>
                 </select>
             </div>
             <div class="filter-group">
                 <select id="filter-price">
                     <option value="all">Tất cả Mức giá</option>
-                    <option value="low">Dưới 3 Tỷ</option>
-                    <option value="mid">3 - 8 Tỷ</option>
-                    <option value="high">Trên 8 Tỷ</option>
+                    <option value="1-2">1 - 2 Tỷ</option>
+                    <option value="2-3">2 - 3 Tỷ</option>
+                    <option value="3-5">3 - 5 Tỷ</option>
+                    <option value="5-10">5 - 10 Tỷ</option>
+                    <option value="10+">Trên 10 Tỷ</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="filter-badge">
+                    <option value="all">Tất cả Trạng thái</option>
+                    <option value="open">Đang bán</option>
+                    <option value="hot">Hot</option>
                 </select>
             </div>
             <button class="btn-search" onclick="filterProperties()">
@@ -1690,20 +1845,20 @@
     <section class="properties" id="properties-section">
         <div class="container">
             <div class="section-title">
-                <h2>Danh Sách Dự Án <span>Chi Tiết</span></h2>
-                <p>Click trực tiếp vào từng sản phẩm để xem đầy đủ thông tin chi tiết và mặt bằng</p>
+                <h2>Danh Sách BĐS <span>Hà Nội</span></h2>
+                <p>Click vào từng sản phẩm để xem đầy đủ thông tin chi tiết và nhận báo giá</p>
                 <div class="bar"></div>
             </div>
 
             <div class="results-header">
                 <div class="results-count">
-                    Hiển thị <strong id="resultCount">30</strong> dự án
+                    Hiển thị <strong id="resultCount">50</strong> BĐS
                 </div>
                 <div class="view-options">
-                    <button class="active" onclick="changeView('grid')" title="Grid View">
+                    <button class="active" onclick="changeView('grid')" title="Dạng lưới">
                         <i class="fas fa-th"></i>
                     </button>
-                    <button onclick="changeView('list')" title="List View">
+                    <button onclick="changeView('list')" title="Dạng danh sách">
                         <i class="fas fa-list"></i>
                     </button>
                 </div>
@@ -1716,6 +1871,9 @@
                 <button class="active" onclick="changePage(1)">1</button>
                 <button onclick="changePage(2)">2</button>
                 <button onclick="changePage(3)">3</button>
+                <button onclick="changePage(4)">4</button>
+                <button onclick="changePage(5)">5</button>
+                <button onclick="changePage(6)">6</button>
                 <button onclick="changePage('next')" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
@@ -1726,40 +1884,40 @@
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <h2>Hỗ Trợ Tư Vấn &amp; <span>Xem Nhà Mẫu</span></h2>
-                    <p>Quý khách hàng quan tâm đến hệ thống, vui lòng để lại thông tin. Đội ngũ chuyên viên tư vấn sẽ gửi trọn bộ tài liệu chi tiết.</p>
+                    <h2>Liên Hệ Tư Vấn <span>Miễn Phí</span></h2>
+                    <p>Quý khách cần tư vấn mua bán chung cư, nhà đất tại Hà Nội, vui lòng liên hệ ngay để được hỗ trợ tốt nhất.</p>
                     <div class="info-item">
                         <div class="icon"><i class="fas fa-phone"></i></div>
                         <div>
                             <strong>Hotline 24/7</strong>
-                            <span class="text">0366.388.104 (Hỗ trợ 24/7)</span>
+                            <span class="text">0366.388.104</span>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="icon"><i class="fab fa-zalo"></i></div>
                         <div>
                             <strong>Zalo</strong>
-                            <span class="text">0366.388.104 - Chat nhanh</span>
+                            <span class="text">0366.388.104</span>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <strong>Email</strong>
-                            <span class="text">tuvan@landmarkrealty.vn</span>
+                            <span class="text">tran.tuan.bds@gmail.com</span>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
                             <strong>Địa chỉ</strong>
-                            <span class="text">Tầng 20, Tòa nhà Landmark, 123 Nguyễn Huệ, Q.1, TP.HCM</span>
+                            <span class="text">Số 123, Đường Trần Duy Hưng, Cầu Giấy, Hà Nội</span>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <h3>Yêu Cầu Thông Tin Toàn Bộ Hệ Thống</h3>
-                    <p class="form-subtitle">Nhận ngay bảng giá và tài liệu dự án chi tiết</p>
+                    <h3>Nhận Báo Giá &amp; Tư Vấn</h3>
+                    <p class="form-subtitle">Để lại thông tin, tôi sẽ liên hệ lại trong 5 phút</p>
                     <form id="contactForm" onsubmit="handleContactForm(event)">
                         <div class="form-row">
                             <div class="form-group">
@@ -1774,18 +1932,17 @@
                         </div>
                         <div class="form-group">
                             <select>
-                                <option value="">Dự án quan tâm</option>
-                                <option>Tất cả dự án</option>
-                                <option>Căn hộ chung cư</option>
-                                <option>Biệt thự liền kề</option>
-                                <option>Đất nền</option>
+                                <option value="">Quan tâm đến</option>
+                                <option>Chung cư</option>
+                                <option>Nhà đất thổ cư</option>
+                                <option>Tất cả</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Ghi chú thêm (nếu có)..."></textarea>
+                            <textarea placeholder="Ghi chú thêm (quận mong muốn, tài chính..."></textarea>
                         </div>
                         <button type="submit" class="btn-submit">
-                            <i class="fas fa-paper-plane"></i> Nhận Tài Liệu Toàn Bộ
+                            <i class="fas fa-paper-plane"></i> Gửi Yêu Cầu
                         </button>
                     </form>
                 </div>
@@ -1793,11 +1950,22 @@
         </div>
     </section>
 
-    <!-- ==================== MODAL CHI TIẾT NÂNG CAO ==================== -->
+    <!-- ==================== MODAL CHI TIẾT ==================== -->
     <div class="modal-overlay" id="property-modal">
         <div class="modal-box">
             <button class="close-modal" onclick="closeDetails()">&times;</button>
-            <img class="modal-img" id="modal-img" src="" alt="Property" />
+
+            <!-- Gallery ảnh -->
+            <div class="modal-gallery" id="modalGallery">
+                <div class="gallery-slider" id="gallerySlider">
+                    <!-- Ảnh sẽ được inject bằng JS -->
+                </div>
+                <button class="gallery-arrow prev" onclick="changeGalleryImage(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-arrow next" onclick="changeGalleryImage(1)"><i class="fas fa-chevron-right"></i></button>
+                <div class="gallery-dots" id="galleryDots"></div>
+                <div class="gallery-counter" id="galleryCounter">1 / 5</div>
+            </div>
+
             <div class="modal-body">
                 <div class="modal-header">
                     <div>
@@ -1831,36 +1999,31 @@
                     </div>
                 </div>
 
-                <div class="modal-desc-title">Mô Tả Chi Tiết Dự Án</div>
+                <div class="modal-desc-title">Mô Tả Chi Tiết</div>
                 <div class="modal-desc-content" id="modal-desc"></div>
 
-                <!-- Tiện ích dự án -->
                 <div class="modal-amenities" id="modal-amenities">
-                    <span class="amenity"><i class="fas fa-swimming-pool"></i> Hồ bơi</span>
-                    <span class="amenity"><i class="fas fa-dumbbell"></i> Gym</span>
-                    <span class="amenity"><i class="fas fa-tree"></i> Công viên</span>
-                    <span class="amenity"><i class="fas fa-shield-alt"></i> Bảo vệ 24/7</span>
-                    <span class="amenity"><i class="fas fa-car"></i> Hầm xe</span>
-                    <span class="amenity"><i class="fas fa-store"></i> Siêu thị</span>
-                    <span class="amenity"><i class="fas fa-school"></i> Trường học</span>
-                    <span class="amenity"><i class="fas fa-hospital"></i> Bệnh viện</span>
+                    <span class="amenity"><i class="fas fa-shield-alt"></i> Pháp lý rõ ràng</span>
+                    <span class="amenity"><i class="fas fa-car"></i> Giao thông thuận tiện</span>
+                    <span class="amenity"><i class="fas fa-store"></i> Gần chợ, siêu thị</span>
+                    <span class="amenity"><i class="fas fa-school"></i> Gần trường học</span>
+                    <span class="amenity"><i class="fas fa-hospital"></i> Gần bệnh viện</span>
+                    <span class="amenity"><i class="fas fa-tree"></i> Gần công viên</span>
+                    <span class="amenity"><i class="fas fa-shield-alt"></i> An ninh tốt</span>
                 </div>
 
-                <!-- Thông tin chủ đầu tư -->
                 <div class="modal-investor">
-                    <div class="investor-icon">L</div>
+                    <div class="investor-icon">T</div>
                     <div class="investor-info">
-                        <h4>Landmark Realty Group</h4>
-                        <p>Chủ đầu tư uy tín hàng đầu với 15 năm kinh nghiệm phát triển bất động sản cao cấp</p>
+                        <h4>Trần Tuấn BDS</h4>
+                        <p>Chuyên mua bán chung cư và nhà đất thổ cư tại Hà Nội - Uy tín &amp; Chuyên nghiệp</p>
                     </div>
                 </div>
 
-                <!-- ============================================================ -->
-                <!-- === FORM NHẬN BÁO GIÁ NGAY TRONG POPUP === -->
-                <!-- ============================================================ -->
+                <!-- Form nhận báo giá -->
                 <div class="modal-form-box">
                     <h4>📋 Nhận Báo Giá &amp; Đặt Lịch Xem Thực Tế</h4>
-                    <p class="form-sub">Điền thông tin để nhận ngay bảng giá, chính sách bán hàng và ưu đãi tốt nhất</p>
+                    <p class="form-sub">Điền thông tin để nhận ngay bảng giá và sắp xếp lịch xem nhà</p>
                     <form class="modal-form-grid" id="modalPriceForm" onsubmit="handlePriceRequest(event)">
                         <input type="text" placeholder="Họ và tên *" required />
                         <input type="tel" placeholder="Số điện thoại *" required />
@@ -1868,12 +2031,11 @@
                         <select required>
                             <option value="">Hình thức quan tâm</option>
                             <option value="mua">Mua để ở</option>
-                            <option value="dau-tu">Đầu tư sinh lời</option>
-                            <option value="cho-thue">Mua cho thuê</option>
+                            <option value="dau-tu">Đầu tư</option>
                             <option value="tham-khao">Tham khảo</option>
                         </select>
-                        <textarea placeholder="Ghi chú thêm (nhu cầu, tài chính dự kiến...)" rows="2"></textarea>
-                        
+                        <textarea placeholder="Ghi chú thêm (tài chính dự kiến, yêu cầu...)" rows="2"></textarea>
+
                         <button type="submit" class="btn-submit-modal">
                             <i class="fas fa-paper-plane"></i> Gửi Yêu Cầu Báo Giá
                         </button>
@@ -1893,16 +2055,13 @@
         </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- === FLOATING SUPPORT BUTTONS - ZALO & PHONE === -->
-    <!-- ============================================================ -->
+    <!-- ==================== FLOATING SUPPORT ==================== -->
     <div class="support-floating" id="supportFloating">
         <a href="https://zalo.me/0366388104" target="_blank" class="support-btn zalo" title="Chat Zalo">
             <i class="fab fa-zalo"></i>
             <span class="tooltip">Chat Zalo</span>
             <span class="badge-count">1</span>
         </a>
-
         <a href="tel:0366388104" class="support-btn phone" title="Gọi ngay">
             <i class="fas fa-phone-alt"></i>
             <span class="tooltip">Gọi ngay 0366.388.104</span>
@@ -1923,220 +2082,221 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>LANDMARK<span>REALTY</span></h3>
-                    <p>Hệ thống phân phối bất động sản hàng đầu Việt Nam với hơn 30 dự án cao cấp trên toàn quốc.</p>
+                    <h3>Trần Tuấn <span>BDS</span></h3>
+                    <p>Chuyên mua bán chung cư và nhà đất thổ cư tại Hà Nội. Cam kết giá tốt - Pháp lý rõ ràng - Hỗ trợ 24/7.</p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
                         <a href="https://zalo.me/0366388104" target="_blank"><i class="fab fa-zalo"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Dự Án</h4>
+                    <h4>Loại BĐS</h4>
                     <ul>
-                        <li><a href="#">Căn hộ chung cư</a></li>
-                        <li><a href="#">Biệt thự liền kề</a></li>
-                        <li><a href="#">Đất nền</a></li>
-                        <li><a href="#">BĐS nghỉ dưỡng</a></li>
+                        <li><a href="#">Chung cư</a></li>
+                        <li><a href="#">Nhà đất thổ cư</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Hỗ trợ</h4>
                     <ul>
-                        <li><a href="#">Chính sách bán hàng</a></li>
-                        <li><a href="#">Hướng dẫn mua nhà</a></li>
-                        <li><a href="#">Tư vấn pháp lý</a></li>
-                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Tư vấn mua bán</a></li>
+                        <li><a href="#">Hỗ trợ pháp lý</a></li>
+                        <li><a href="#">Thủ tục sang tên</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Về chúng tôi</h4>
+                    <h4>Liên hệ</h4>
                     <ul>
-                        <li><a href="#">Giới thiệu</a></li>
-                        <li><a href="#">Tuyển dụng</a></li>
-                        <li><a href="#">Tin tức</a></li>
-                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="tel:0366388104">📞 0366.388.104</a></li>
+                        <li><a href="https://zalo.me/0366388104" target="_blank">💬 Zalo</a></li>
+                        <li><a href="mailto:tran.tuan.bds@gmail.com">✉️ Email</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Landmark Realty. Hotline: <strong>0366.388.104</strong> (Zalo 24/7)</p>
+                <p>&copy; 2026 Trần Tuấn BDS. Hotline: <strong>0366.388.104</strong> (Zalo 24/7)</p>
             </div>
         </div>
     </footer>
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script>
-        // ======= DANH SÁCH QUẬN/HUYỆN THEO TỈNH =======
-        const districtData = {
-            hanoi: [
-                'Ba Đình', 'Hoàn Kiếm', 'Hai Bà Trưng', 'Đống Đa', 'Tây Hồ', 
-                'Cầu Giấy', 'Thanh Xuân', 'Hoàng Mai', 'Long Biên', 'Bắc Từ Liêm',
-                'Nam Từ Liêm', 'Gia Lâm', 'Đông Anh', 'Sóc Sơn', 'Mê Linh',
-                'Hoài Đức', 'Quốc Oai', 'Thạch Thất', 'Chương Mỹ', 'Thanh Trì',
-                'Thường Tín', 'Phú Xuyên', 'Ứng Hòa', 'Mỹ Đức', 'Ba Vì'
-            ],
-            hcm: [
-                'Quận 1', 'Quận 2', 'Quận 3', 'Quận 4', 'Quận 5',
-                'Quận 6', 'Quận 7', 'Quận 8', 'Quận 9', 'Quận 10',
-                'Quận 11', 'Quận 12', 'Bình Thạnh', 'Gò Vấp', 'Phú Nhuận',
-                'Tân Bình', 'Tân Phú', 'Bình Tân', 'Thủ Đức', 'Nhà Bè',
-                'Hóc Môn', 'Bình Chánh', 'Củ Chi', 'Cần Giờ'
-            ],
-            danang: [
-                'Hải Châu', 'Thanh Khê', 'Sơn Trà', 'Ngũ Hành Sơn', 'Liên Chiểu',
-                'Cẩm Lệ', 'Hòa Vang', 'Hoàng Sa'
-            ],
-            haiphong: [
-                'Hồng Bàng', 'Lê Chân', 'Ngô Quyền', 'Kiến An', 'Hải An',
-                'Dương Kinh', 'Đồ Sơn', 'An Dương', 'An Lão', 'Kiến Thụy',
-                'Vĩnh Bảo', 'Tiên Lãng', 'Thủy Nguyên', 'Cát Hải', 'Bạch Long Vĩ'
-            ],
-            cantho: [
-                'Ninh Kiều', 'Cái Răng', 'Bình Thủy', 'Ô Môn', 'Thốt Nốt',
-                'Phong Điền', 'Cờ Đỏ', 'Thới Lai', 'Vĩnh Thạnh'
-            ],
-            binhduong: [
-                'Thủ Dầu Một', 'Bến Cát', 'Tân Uyên', 'Dĩ An', 'Thuận An',
-                'Bàu Bàng', 'Bắc Tân Uyên', 'Dầu Tiếng', 'Phú Giáo'
-            ],
-            dongnai: [
-                'Biên Hòa', 'Long Khánh', 'Trảng Bom', 'Long Thành', 'Nhơn Trạch',
-                'Vĩnh Cửu', 'Xuân Lộc', 'Thống Nhất', 'Định Quán', 'Tân Phú', 'Cẩm Mỹ'
-            ],
-            baria: [
-                'Vũng Tàu', 'Bà Rịa', 'Phú Mỹ', 'Châu Đức', 'Xuyên Mộc',
-                'Long Điền', 'Đất Đỏ', 'Côn Đảo'
-            ],
-            quangninh: [
-                'Hạ Long', 'Cẩm Phả', 'Uông Bí', 'Móng Cái', 'Quảng Yên',
-                'Đông Triều', 'Hoành Bồ', 'Vân Đồn', 'Cô Tô', 'Hải Hà', 'Đầm Hà', 'Tiên Yên'
-            ],
-            nhatrang: [
-                'Nha Trang', 'Cam Ranh', 'Ninh Hòa', 'Vạn Ninh', 'Diên Khánh',
-                'Cam Lâm', 'Khánh Vĩnh', 'Khánh Sơn', 'Trường Sa'
-            ]
-        };
+        // ============================================================
+        // 1. DỮ LIỆU BĐS - 50 SẢN PHẨM TẠI HÀ NỘI
+        // ============================================================
+        const propertiesData = [];
 
-        // ======= DATA 30 DỰ ÁN =======
-        const propertiesData = [
-            // HÀ NỘI
-            { id: 1, type: "apartment", location: "hanoi", district: "Nam Từ Liêm", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "4.2 Tỷ", title: "Căn Hộ Cao Cấp Vinhomes Smart City", locText: "Nam Từ Liêm, Hà Nội", space: "72 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", desc: "Dự án sở hữu đại công viên 36ha hàng đầu Đông Nam Á với hơn 15 công viên chủ đề đa dạng. Thừa hưởng hạ tầng giao thông kết nối đồng bộ, chuẩn sống xanh sinh thái quốc tế tinh hoa hàng đầu khu vực.", investor: "Vingroup" },
-            { id: 2, type: "apartment", location: "hanoi", district: "Cầu Giấy", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "5.5 Tỷ", title: "Chung Cư Cao Cấp Masteri West Heights", locText: "Cầu Giấy, Hà Nội", space: "80 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80", desc: "Tọa lạc tại vị trí kim cương lòng đại đô thị thông minh, mang đến không gian sống duy mỹ, tiện ích đặc quyền chuẩn resort 5 sao như bể bơi tầng thượng view panorama toàn cảnh.", investor: "Masterise Homes" },
-            { id: 3, type: "apartment", location: "hanoi", district: "Tây Hồ", priceRange: "low", badge: "rent", badgeText: "Cho Thuê", price: "2.8 Tỷ", title: "Căn Hộ Studio Sun Grand City", locText: "Tây Hồ, Hà Nội", space: "45 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80", desc: "Không gian nhỏ gọn nhưng tối ưu công năng lý tưởng cho chuyên gia nước ngoài thuê lâu dài, cách mặt hồ Tây chỉ 3 phút đi bộ cùng bầu không khí vô cùng thoáng đãng.", investor: "Sun Group" },
-            { id: 4, type: "villa", location: "hanoi", district: "Long Biên", priceRange: "high", badge: "hot", badgeText: "Hot", price: "25 Tỷ", title: "Biệt Thự Vinhomes Riverside Hoa Sữa", locText: "Long Biên, Hà Nội", space: "280 m²", bed: "5 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80", desc: "Khu biệt thự sinh thái xa hoa mang phong cách Ý ven sông lãng mạn. An ninh nghiêm ngặt đa lớp bảo vệ tuyệt đối không gian sống riêng tư thanh bình.", investor: "Vingroup" },
-            { id: 5, type: "villa", location: "hanoi", district: "Hoàng Mai", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "14 Tỷ", title: "Liền Kề Gamuda Gardens View Công Viên", locText: "Hoàng Mai, Hà Nội", space: "120 m²", bed: "3 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80", desc: "Khu đô thị xanh chuẩn sinh thái Malaysia, nhà liền kề có sân vườn trước sau, không gian thiết kế đón gió thiên nhiên ngập tràn năng lượng.", investor: "Gamuda Land" },
-            
-            // TP.HCM
-            { id: 6, type: "apartment", location: "hcm", district: "Quận 9", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "4.8 Tỷ", title: "Căn Hộ Cao Cấp Vinhomes Grand Park", locText: "Quận 9, TP. Hồ Chí Minh", space: "72 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80", desc: "Đại đô thị thông minh với hệ sinh thái tiện ích vượt trội, kết nối giao thông thuận tiện đến trung tâm thành phố.", investor: "Vingroup" },
-            { id: 7, type: "apartment", location: "hcm", district: "Quận 2", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "12 Tỷ", title: "Căn Hộ Hạng Sang Empire City Thủ Thiêm", locText: "Quận 2, TP. Hồ Chí Minh", space: "98 m²", bed: "3 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80", desc: "Tổ hợp căn hộ siêu cao cấp ngay lõi trung tâm tài chính mới Thủ Thiêm, sở hữu view trực diện hầm Thủ Thiêm và trung tâm Quận 1 phồn hoa lộng lẫy.", investor: "Keppel Land" },
-            { id: 8, type: "apartment", location: "hcm", district: "Quận 7", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "6.1 Tỷ", title: "Chung Cư Cao Cấp Sunrise City", locText: "Quận 7, TP. Hồ Chí Minh", space: "85 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80", desc: "Cửa ngõ kết nối giao thương sầm uất Phú Mỹ Hưng, đầy đủ tiện ích nội khu chuẩn quốc tế gồm siêu thị, hồ bơi tràn bờ, phòng gym cao cấp hiện đại.", investor: "Novaland" },
-            { id: 9, type: "villa", location: "hcm", district: "Quận 7", priceRange: "high", badge: "open", badgeText: "Mở Bán", price: "32 Tỷ", title: "Biệt Thự Ven Sông Chateau Phú Mỹ Hưng", locText: "Quận 7, TP. Hồ Chí Minh", space: "310 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80", desc: "Lâu đài kiến trúc hoàng gia châu Âu sang trọng soi bóng bên dòng sông cảnh quan thanh mát, khẳng định vị thế đỉnh cao của giới doanh nhân thành đạt.", investor: "Phú Mỹ Hưng" },
-            { id: 10, type: "villa", location: "hcm", district: "Quận 9", priceRange: "high", badge: "hot", badgeText: "Hiếm", price: "45 Tỷ", title: "Dinh Thự The Riviera Cove VIP", locText: "Quận 9, TP. Hồ Chí Minh", space: "500 m²", bed: "5 PN", bath: "6 WC", img: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80", desc: "Dinh thự đơn lập đẳng cấp siêu sang với bến đỗ du thuyền nội khu riêng biệt, hồ bơi lớn cùng thiết kế mở hòa mình tuyệt đối vào cảnh sắc sông nước thơ mộng.", investor: "Masterise Homes" },
-            
-            // ĐÀ NẴNG
-            { id: 11, type: "apartment", location: "danang", district: "Hải Châu", priceRange: "mid", badge: "soon", badgeText: "Sắp Ra Mắt", price: "3.8 Tỷ", title: "Căn Hộ Cận Biển The Filmore Da Nang", locText: "Hải Châu, Đà Nẵng", space: "65 m²", bed: "1 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", desc: "Biểu tượng kiến trúc mới bên bờ sông Hàn thơ mộng. Thiết kế kính kịch trần sang trọng giúp bắt trọn ánh sáng tự nhiên và view biển Mỹ Khê tuyệt đẹp từ trên cao.", investor: "Sun Group" },
-            { id: 12, type: "apartment", location: "danang", district: "Ngũ Hành Sơn", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.5 Tỷ", title: "Chung Cư Mường Thanh Sơn Trà", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "60 m²", bed: "2 PN", bath: "1 WC", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80", desc: "Vị trí đắc địa ngay mặt tiền đường Võ Nguyên Giáp, thích hợp mua ở định cư lâu dài hoặc khai thác vận hành căn hộ dịch vụ du lịch biển sinh lời cực tốt.", investor: "Mường Thanh Group" },
-            { id: 13, type: "villa", location: "danang", district: "Ngũ Hành Sơn", priceRange: "high", badge: "soon", badgeText: "Sắp Ra Mắt", price: "19 Tỷ", title: "Biệt Thự Nghỉ Dưỡng Regal One River", locText: "Ngũ Hành Sơn, Đà Nẵng", space: "300 m²", bed: "4 PN", bath: "4 WC", img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80", desc: "Ứng dụng toàn bộ đá mable tự nhiên nhập khẩu nguyên khối ốp toàn bộ mặt ngoài, hệ thống kính hộp low-E cản nhiệt bảo vệ sức khoẻ toàn diện.", investor: "Regal Group" },
-            
-            // CÁC TỈNH KHÁC
-            { id: 14, type: "land", location: "binhduong", district: "Thủ Dầu Một", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "2.8 Tỷ", title: "Đất Nền KDC Bình Dương New City", locText: "Thủ Dầu Một, Bình Dương", space: "120 m²", bed: "--", bath: "--", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80", desc: "Khu đô thị hiện đại với hạ tầng đồng bộ, gần các khu công nghiệp lớn, tiềm năng phát triển cực cao.", investor: "Becamex" },
-            { id: 15, type: "land", location: "dongnai", district: "Long Thành", priceRange: "mid", badge: "hot", badgeText: "Hot", price: "4.5 Tỷ", title: "Đất Nền Cận Sân Bay Long Thành", locText: "Long Thành, Đồng Nai", space: "200 m²", bed: "--", bath: "--", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80", desc: "Vị trí vàng gần sân bay quốc tế Long Thành, cơ hội đầu tư sinh lời cao khi sân bay đi vào hoạt động.", investor: "Tập đoàn Đất Xanh" },
-            { id: 16, type: "apartment", location: "haiphong", district: "Ngô Quyền", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "3.2 Tỷ", title: "Căn Hộ Cao Cấp Hải Phòng Tower", locText: "Ngô Quyền, Hải Phòng", space: "75 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80", desc: "Tòa tháp đôi biểu tượng mới của thành phố hoa phượng đỏ, view trọn vẹn vịnh Lan Hạ và thành phố.", investor: "Hải Phòng Group" },
-            { id: 17, type: "apartment", location: "cantho", district: "Ninh Kiều", priceRange: "low", badge: "open", badgeText: "Mở Bán", price: "3.5 Tỷ", title: "Căn Hộ Tây Đô Riverside", locText: "Ninh Kiều, Cần Thơ", space: "70 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80", desc: "Dự án ven sông Hậu hiện đại, không gian sống thoáng mát, tiện ích đa dạng phục vụ cư dân.", investor: "Cần Thơ Land" },
-            { id: 18, type: "villa", location: "baria", district: "Vũng Tàu", priceRange: "high", badge: "hot", badgeText: "Hot", price: "28 Tỷ", title: "Biệt Thự Nghỉ Dưỡng Vũng Tàu View Biển", locText: "Vũng Tàu, Bà Rịa - Vũng Tàu", space: "350 m²", bed: "4 PN", bath: "5 WC", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80", desc: "Biệt thự sang trọng view biển, không gian nghỉ dưỡng đẳng cấp với hồ bơi riêng và sân vườn rộng lớn.", investor: "Novaland" },
-            { id: 19, type: "apartment", location: "quangninh", district: "Hạ Long", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "5.8 Tỷ", title: "Căn Hộ View Vịnh Hạ Long", locText: "Hạ Long, Quảng Ninh", space: "85 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80", desc: "Căn hộ cao cấp với view toàn cảnh vịnh Hạ Long - Di sản thiên nhiên thế giới, không gian sống đẳng cấp.", investor: "Sun Group" },
-            { id: 20, type: "apartment", location: "nhatrang", district: "Nha Trang", priceRange: "mid", badge: "open", badgeText: "Mở Bán", price: "6.2 Tỷ", title: "Căn Hộ Ocean View Nha Trang", locText: "Nha Trang, Khánh Hòa", space: "78 m²", bed: "2 PN", bath: "2 WC", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80", desc: "Dự án nghỉ dưỡng cao cấp ven biển, thiết kế hiện đại với view biển 180 độ, đầy đủ tiện ích resort.", investor: "Hưng Thịnh" },
+        // Danh sách quận/huyện Hà Nội
+        const districts = [
+            'Ba Đình', 'Cầu Giấy', 'Đống Đa', 'Hai Bà Trưng', 'Hoàn Kiếm',
+            'Hoàng Mai', 'Long Biên', 'Nam Từ Liêm', 'Tây Hồ', 'Thanh Xuân',
+            'Bắc Từ Liêm', 'Gia Lâm', 'Đông Anh', 'Sóc Sơn', 'Hoài Đức', 'Thanh Trì'
         ];
 
-        // Bổ sung thêm dữ liệu để đủ 30 sản phẩm
-        const additionalTitles = [
-            "Căn Hộ Sang Trọng Central Park",
-            "Biệt Thự Nghỉ Dưỡng Ven Sông",
-            "Đất Nền KDC Xanh Tương Lai",
-            "Chung Cư Cao Cấp Golden Lake",
-            "Biệt Thự Song Lập The Manor",
-            "Căn Hộ View Sông Westgate",
-            "Đất Nền KĐT Phát Triển Mới",
-            "Biệt Thự Vườn Sinh Thái Eco Park",
-            "Căn Hộ Thương Mại Kim Cương",
-            "Đất Nền Vị Trí Đắc Địa"
+        // Danh sách ảnh mẫu (có thể thay thế bằng ảnh thực tế)
+        const imagePool = [
+            'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80'
         ];
 
-        while (propertiesData.length < 30) {
-            const id = propertiesData.length + 1;
-            const provinces = ['hanoi', 'hcm', 'danang', 'haiphong', 'cantho', 'binhduong', 'dongnai', 'baria', 'quangninh', 'nhatrang'];
-            const province = provinces[Math.floor(Math.random() * provinces.length)];
-            const districts = districtData[province] || ['Trung Tâm'];
-            const district = districts[Math.floor(Math.random() * districts.length)];
-            const type = ['apartment', 'villa', 'land'][Math.floor(Math.random() * 3)];
-            const priceRanges = ['low', 'mid', 'high'];
-            const pr = priceRanges[Math.floor(Math.random() * 3)];
-            const badges = ['open', 'soon', 'hot', 'rent'];
-            const badge = badges[Math.floor(Math.random() * 4)];
-            const badgeTexts = { open: 'Mở Bán', soon: 'Sắp Ra Mắt', hot: 'Hot', rent: 'Cho Thuê' };
-            const prices = { low: ['2.3 Tỷ', '2.8 Tỷ', '3.2 Tỷ'], mid: ['4.5 Tỷ', '5.9 Tỷ', '7.2 Tỷ'], high: ['11 Tỷ', '16 Tỷ', '28 Tỷ'] };
-            const spaces = ['65 m²', '80 m²', '95 m²', '110 m²', '150 m²', '220 m²', '300 m²'];
-            const beds = ['1 PN', '2 PN', '3 PN', '4 PN', '5 PN'];
-            const baths = ['1 WC', '2 WC', '3 WC', '4 WC', '5 WC'];
-            const provinceNames = { hanoi: 'Hà Nội', hcm: 'TP. Hồ Chí Minh', danang: 'Đà Nẵng', haiphong: 'Hải Phòng', 
-                                   cantho: 'Cần Thơ', binhduong: 'Bình Dương', dongnai: 'Đồng Nai', baria: 'Bà Rịa - Vũng Tàu',
-                                   quangninh: 'Quảng Ninh', nhatrang: 'Khánh Hòa' };
-            const investors = ['Vingroup', 'Novaland', 'Sun Group', 'Masterise Homes', 'Hưng Thịnh', 'Becamex', 'Đất Xanh'];
+        // Danh sách chung cư Hà Nội
+        const apartments = [
+            { name: 'Chung cư Vinhomes Smart City', price: '3.2 Tỷ', space: '72m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư Masteri West Heights', price: '4.5 Tỷ', space: '85m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư The Matrix One', price: '3.8 Tỷ', space: '78m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư Skyline Tower', price: '5.2 Tỷ', space: '95m²', bed: '3 PN', bath: '2 WC' },
+            { name: 'Chung cư Imperial Plaza', price: '6.8 Tỷ', space: '120m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Chung cư Golden Palace', price: '4.2 Tỷ', space: '80m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư Lancaster', price: '7.5 Tỷ', space: '110m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Chung cư FLC Star Tower', price: '3.5 Tỷ', space: '68m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư Ruby Tower', price: '4.8 Tỷ', space: '88m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư Diamond Park', price: '6.2 Tỷ', space: '105m²', bed: '3 PN', bath: '2 WC' },
+            { name: 'Chung cư Mường Thanh Trung Văn', price: '2.8 Tỷ', space: '65m²', bed: '2 PN', bath: '1 WC' },
+            { name: 'Chung cư CT3 Văn Phú', price: '2.5 Tỷ', space: '60m²', bed: '2 PN', bath: '1 WC' },
+            { name: 'Chung cư Hà Nội Garden', price: '3.6 Tỷ', space: '75m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư New Horizon', price: '5.5 Tỷ', space: '92m²', bed: '3 PN', bath: '2 WC' },
+            { name: 'Chung cư The Manor', price: '8.2 Tỷ', space: '130m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Chung cư Park Hill', price: '4.0 Tỷ', space: '82m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư HHM Tower', price: '3.3 Tỷ', space: '70m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư Bảo Sơn Tower', price: '5.8 Tỷ', space: '96m²', bed: '3 PN', bath: '2 WC' },
+            { name: 'Chung cư Garden Hill', price: '4.6 Tỷ', space: '86m²', bed: '2 PN', bath: '2 WC' },
+            { name: 'Chung cư Sunview City', price: '3.1 Tỷ', space: '68m²', bed: '2 PN', bath: '1 WC' },
+            { name: 'Chung cư The Everly', price: '6.5 Tỷ', space: '108m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Chung cư Green Village', price: '2.2 Tỷ', space: '55m²', bed: '1 PN', bath: '1 WC' },
+            { name: 'Chung cư Tây Hồ View', price: '7.8 Tỷ', space: '115m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Chung cư Panorama', price: '5.0 Tỷ', space: '90m²', bed: '3 PN', bath: '2 WC' },
+            { name: 'Chung cư The Summit', price: '4.3 Tỷ', space: '83m²', bed: '2 PN', bath: '2 WC' },
+        ];
 
-            propertiesData.push({
-                id: id,
-                type: type,
-                location: province,
-                district: district,
-                priceRange: pr,
-                badge: badge,
-                badgeText: badgeTexts[badge],
-                price: prices[pr][Math.floor(Math.random() * prices[pr].length)],
-                title: additionalTitles[id % additionalTitles.length] + (id > 20 ? ' ' + id : ''),
-                locText: district + ', ' + provinceNames[province],
-                space: spaces[Math.floor(Math.random() * spaces.length)],
-                bed: beds[Math.floor(Math.random() * beds.length)],
-                bath: baths[Math.floor(Math.random() * baths.length)],
-                img: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
-                      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
-                      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-                      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
-                      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
-                      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80'][id % 6],
-                desc: "Dự án cao cấp với hệ thống tiện ích đa dạng, vị trí đắc địa tại trung tâm thành phố. Sở hữu không gian sống sang trọng, hiện đại và an ninh tuyệt đối. Pháp lý minh bạch, sổ hồng riêng từng căn. Đây là cơ hội đầu tư sinh lời cực tốt cho khách hàng thông thái.",
-                investor: investors[Math.floor(Math.random() * investors.length)]
-            });
+        // Danh sách nhà đất thổ cư
+        const lands = [
+            { name: 'Nhà mặt phố Đường Láng, Đống Đa', price: '12 Tỷ', space: '45m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Nhà phố Trần Duy Hưng, Cầu Giấy', price: '15 Tỷ', space: '52m²', bed: '4 PN', bath: '4 WC' },
+            { name: 'Đất thổ cư Hồ Tùng Mậu, Từ Liêm', price: '8.5 Tỷ', space: '80m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Lạc Long Quân, Tây Hồ', price: '18 Tỷ', space: '60m²', bed: '4 PN', bath: '4 WC' },
+            { name: 'Đất thổ cư Vĩnh Hưng, Hoàng Mai', price: '3.2 Tỷ', space: '42m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Nguyễn Văn Cừ, Long Biên', price: '6.8 Tỷ', space: '38m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Đất thổ cư Đại Mỗ, Nam Từ Liêm', price: '4.5 Tỷ', space: '55m²', bed: '--', bath: '--' },
+            { name: 'Nhà mặt phố Kim Mã, Ba Đình', price: '22 Tỷ', space: '40m²', bed: '4 PN', bath: '4 WC' },
+            { name: 'Đất thổ cư Trung Kính, Cầu Giấy', price: '5.8 Tỷ', space: '65m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Dương Đình Nghệ, Cầu Giấy', price: '9.5 Tỷ', space: '48m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Đất thổ cư Tây Mỗ, Nam Từ Liêm', price: '3.8 Tỷ', space: '50m²', bed: '--', bath: '--' },
+            { name: 'Nhà mặt phố Giảng Võ, Ba Đình', price: '20 Tỷ', space: '35m²', bed: '4 PN', bath: '4 WC' },
+            { name: 'Đất thổ cư Cổ Nhuế, Bắc Từ Liêm', price: '2.9 Tỷ', space: '40m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Trường Chinh, Đống Đa', price: '14 Tỷ', space: '42m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Đất thổ cư Phú Diễn, Bắc Từ Liêm', price: '2.5 Tỷ', space: '38m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Ngô Thì Nhậm, Hoàn Kiếm', price: '25 Tỷ', space: '30m²', bed: '4 PN', bath: '4 WC' },
+            { name: 'Đất thổ cư Yên Hòa, Cầu Giấy', price: '6.2 Tỷ', space: '60m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Tôn Thất Tùng, Đống Đa', price: '11 Tỷ', space: '38m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Đất thổ cư Mễ Trì, Nam Từ Liêm', price: '4.2 Tỷ', space: '48m²', bed: '--', bath: '--' },
+            { name: 'Nhà mặt phố Thụy Khuê, Tây Hồ', price: '16 Tỷ', space: '50m²', bed: '4 PN', bath: '4 WC' },
+            { name: 'Đất thổ cư Phạm Văn Đồng, Từ Liêm', price: '7.5 Tỷ', space: '70m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Hàng Bông, Hoàn Kiếm', price: '28 Tỷ', space: '25m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Đất thổ cư Định Công, Hoàng Mai', price: '3.5 Tỷ', space: '45m²', bed: '--', bath: '--' },
+            { name: 'Nhà phố Nguyễn Khang, Cầu Giấy', price: '13 Tỷ', space: '44m²', bed: '3 PN', bath: '3 WC' },
+            { name: 'Đất thổ cư Văn Quán, Hà Đông', price: '5.0 Tỷ', space: '55m²', bed: '--', bath: '--' },
+        ];
+
+        // Hàm lấy nhiều ảnh cho 1 sản phẩm
+        function getImagesForProduct(index, count = 5) {
+            const images = [];
+            for (let i = 0; i < count; i++) {
+                const imgIndex = (index + i) % imagePool.length;
+                images.push(imagePool[imgIndex]);
+            }
+            return images;
         }
 
-        // Biến trạng thái
+        // Hàm chuyển đổi giá sang range
+        function getPriceRange(price) {
+            const num = parseFloat(price);
+            if (num < 2) return '1-2';
+            if (num < 3) return '2-3';
+            if (num < 5) return '3-5';
+            if (num < 10) return '5-10';
+            return '10+';
+        }
+
+        // Tạo dữ liệu - Chung cư
+        apartments.forEach((item, index) => {
+            const district = districts[index % districts.length];
+            const badge = index % 2 === 0 ? 'open' : 'hot';
+            const badgeText = badge === 'open' ? 'Đang bán' : 'Hot';
+            const priceRange = getPriceRange(item.price);
+            const images = getImagesForProduct(index, 5);
+
+            propertiesData.push({
+                id: propertiesData.length + 1,
+                type: 'apartment',
+                district: district,
+                priceRange: priceRange,
+                badge: badge,
+                badgeText: badgeText,
+                price: item.price,
+                title: item.name,
+                locText: district + ', Hà Nội',
+                space: item.space,
+                bed: item.bed,
+                bath: item.bath,
+                images: images,
+                desc: `Chung cư ${item.name} tọa lạc tại vị trí đắc địa tại quận ${district}, Hà Nội. Dự án sở hữu vị trí giao thông thuận tiện, gần các tiện ích như trường học, bệnh viện, siêu thị. Thiết kế hiện đại, pháp lý rõ ràng, sổ đỏ lâu dài. Đây là cơ hội tuyệt vời để sở hữu một căn hộ lý tưởng tại thủ đô.`,
+                investor: 'Trần Tuấn BDS',
+                amenities: ['Hồ bơi', 'Gym', 'Công viên', 'Bảo vệ 24/7', 'Hầm xe', 'Siêu thị', 'Trường học', 'Bệnh viện']
+            });
+        });
+
+        // Tạo dữ liệu - Nhà đất thổ cư
+        lands.forEach((item, index) => {
+            const district = districts[(index + 3) % districts.length];
+            const badge = index % 2 === 0 ? 'open' : 'hot';
+            const badgeText = badge === 'open' ? 'Đang bán' : 'Hot';
+            const priceRange = getPriceRange(item.price);
+            const images = getImagesForProduct(index + 10, 5);
+
+            propertiesData.push({
+                id: propertiesData.length + 1,
+                type: 'land',
+                district: district,
+                priceRange: priceRange,
+                badge: badge,
+                badgeText: badgeText,
+                price: item.price,
+                title: item.name,
+                locText: district + ', Hà Nội',
+                space: item.space,
+                bed: item.bed,
+                bath: item.bath,
+                images: images,
+                desc: `${item.name} tại quận ${district}, Hà Nội. Vị trí đắc địa, giao thông thuận tiện, gần trường học, bệnh viện, chợ. Pháp lý rõ ràng, sổ đỏ chính chủ. Diện tích ${item.space}, thích hợp xây dựng nhà ở hoặc kinh doanh. Giá bán ${item.price}. Liên hệ ngay để xem nhà và thương lượng.`,
+                investor: 'Trần Tuấn BDS',
+                amenities: ['Pháp lý rõ ràng', 'Giao thông thuận tiện', 'Gần chợ', 'Gần trường học', 'Gần bệnh viện', 'An ninh tốt']
+            });
+        });
+
+        // ============================================================
+        // 2. BIẾN TRẠNG THÁI & HÀM XỬ LÝ
+        // ============================================================
         let currentPage = 1;
         const itemsPerPage = 9;
         let currentFiltered = [...propertiesData];
         let currentView = 'grid';
+        let currentModalId = null;
+        let currentGalleryIndex = 0;
+        let currentGalleryImages = [];
 
-        // ======= CẬP NHẬT DANH SÁCH QUẬN/HUYỆN =======
-        function updateDistricts() {
-            const province = document.getElementById('filter-province').value;
-            const districtSelect = document.getElementById('filter-district');
-            districtSelect.innerHTML = '<option value="all">Tất cả Quận/Huyện</option>';
-
-            if (province !== 'all' && districtData[province]) {
-                districtData[province].forEach(district => {
-                    const option = document.createElement('option');
-                    option.value = district;
-                    option.textContent = district;
-                    districtSelect.appendChild(option);
-                });
-                districtSelect.disabled = false;
-            } else {
-                districtSelect.disabled = true;
-            }
-        }
-
-        // ======= HIỂN THỊ SẢN PHẨM =======
+        // ============================================================
+        // 3. HIỂN THỊ SẢN PHẨM
+        // ============================================================
         function displayProperties(items, page = 1) {
             const grid = document.getElementById('propertyGrid');
             grid.innerHTML = '';
@@ -2150,7 +2310,7 @@
                 grid.innerHTML = `
                     <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
                         <i class="fas fa-search" style="font-size: 48px; color: #ccc; margin-bottom: 20px;"></i>
-                        <h3 style="color: var(--text-gray);">Không tìm thấy dự án nào phù hợp</h3>
+                        <h3 style="color: var(--text-gray);">Không tìm thấy BĐS nào phù hợp</h3>
                         <p style="color: #aaa;">Vui lòng thay đổi bộ lọc tìm kiếm</p>
                     </div>
                 `;
@@ -2169,12 +2329,31 @@
                 card.style.animation = 'fadeInUp 0.5s ease forwards';
                 card.style.animationDelay = (index * 0.05) + 's';
 
-                const typeLabel = item.type === 'apartment' ? 'Căn hộ' : item.type === 'villa' ? 'Biệt thự' : 'Đất nền';
+                const typeLabel = item.type === 'apartment' ? 'Chung cư' : 'Nhà đất thổ cư';
                 const isWishlisted = wishlist.includes(item.id);
+                const firstImage = item.images && item.images.length > 0 ? item.images[0] : 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80';
+
+                // Tạo slider dots cho ảnh
+                let dotsHtml = '';
+                if (item.images && item.images.length > 1) {
+                    for (let i = 0; i < Math.min(item.images.length, 5); i++) {
+                        dotsHtml += `<button class="dot ${i === 0 ? 'active' : ''}" onclick="event.stopPropagation(); slideCardImage(${item.id}, ${i})"></button>`;
+                    }
+                }
 
                 card.innerHTML = `
                     <div class="property-img">
-                        <img src="${item.img}" alt="${item.title}" loading="lazy" />
+                        <div class="img-slider" id="cardSlider_${item.id}" style="transform: translateX(0)">
+                            ${item.images && item.images.length > 0 ? 
+                                item.images.slice(0, 5).map(img => `<img src="${img}" alt="${item.title}" loading="lazy" />`).join('') :
+                                `<img src="${firstImage}" alt="${item.title}" loading="lazy" />`
+                            }
+                        </div>
+                        ${item.images && item.images.length > 1 ? `
+                            <button class="slider-arrow prev" onclick="event.stopPropagation(); slideCardImage(${item.id}, -1)"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-arrow next" onclick="event.stopPropagation(); slideCardImage(${item.id}, 1)"><i class="fas fa-chevron-right"></i></button>
+                            <div class="slider-nav">${dotsHtml}</div>
+                        ` : ''}
                         <span class="badge ${item.badge}">${item.badgeText}</span>
                         <div class="property-actions">
                             <button onclick="event.stopPropagation(); toggleWishlist(${item.id})" 
@@ -2195,7 +2374,7 @@
                             <span class="detail-item"><i class="fas fa-tag"></i> ${typeLabel}</span>
                         </div>
                         <button class="btn-view" onclick="event.stopPropagation(); openDetails(${item.id})">
-                            <i class="fas fa-eye"></i> Yêu Cầu Báo Giá &amp; Xem Chi Tiết
+                            <i class="fas fa-eye"></i> Xem Chi Tiết &amp; Nhận Báo Giá
                         </button>
                     </div>
                 `;
@@ -2206,11 +2385,54 @@
             updatePagination(items.length, page);
         }
 
-        // ======= PAGINATION =======
+        // ============================================================
+        // 4. SLIDER CHO CARD SẢN PHẨM
+        // ============================================================
+        let cardSliderData = {};
+
+        function slideCardImage(id, direction) {
+            const item = propertiesData.find(p => p.id === id);
+            if (!item || !item.images || item.images.length <= 1) return;
+
+            if (!cardSliderData[id]) {
+                cardSliderData[id] = { current: 0 };
+            }
+
+            const data = cardSliderData[id];
+            const maxIndex = Math.min(item.images.length, 5) - 1;
+
+            if (direction === 1) {
+                data.current = Math.min(data.current + 1, maxIndex);
+            } else if (direction === -1) {
+                data.current = Math.max(data.current - 1, 0);
+            } else if (typeof direction === 'number') {
+                data.current = Math.max(0, Math.min(direction, maxIndex));
+            }
+
+            const slider = document.getElementById(`cardSlider_${id}`);
+            if (slider) {
+                slider.style.transform = `translateX(-${data.current * 100}%)`;
+            }
+
+            // Update dots
+            const dots = document.querySelectorAll(`#cardSlider_${id}`).parentElement.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === data.current);
+            });
+        }
+
+        // ============================================================
+        // 5. PAGINATION
+        // ============================================================
         function updatePagination(totalItems, currentPage) {
             const totalPages = Math.ceil(totalItems / itemsPerPage);
             const container = document.getElementById('pagination');
-            let html = '<button onclick="changePage(\'prev\')" id="prevBtn"><i class="fas fa-chevron-left"></i></button>';
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = `<button onclick="changePage('prev')" id="prevBtn"><i class="fas fa-chevron-left"></i></button>`;
 
             if (totalPages <= 7) {
                 for (let i = 1; i <= totalPages; i++) {
@@ -2219,11 +2441,11 @@
             } else {
                 html += `<button onclick="changePage(1)" class="${1 === currentPage ? 'active' : ''}">1</button>`;
                 if (currentPage > 3) html += '<span style="padding: 10px;">...</span>';
-                
+
                 for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
                     html += `<button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</button>`;
                 }
-                
+
                 if (currentPage < totalPages - 2) html += '<span style="padding: 10px;">...</span>';
                 html += `<button onclick="changePage(${totalPages})" class="${totalPages === currentPage ? 'active' : ''}">${totalPages}</button>`;
             }
@@ -2253,7 +2475,9 @@
             document.getElementById('properties-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // ======= VIEW TOGGLE =======
+        // ============================================================
+        // 6. VIEW TOGGLE
+        // ============================================================
         function changeView(view) {
             currentView = view;
             document.querySelectorAll('.view-options button').forEach(btn => btn.classList.remove('active'));
@@ -2265,19 +2489,21 @@
             displayProperties(currentFiltered, currentPage);
         }
 
-        // ======= BỘ LỌC =======
+        // ============================================================
+        // 7. BỘ LỌC
+        // ============================================================
         function filterProperties() {
             const typeValue = document.getElementById('filter-type').value;
-            const provinceValue = document.getElementById('filter-province').value;
             const districtValue = document.getElementById('filter-district').value;
             const priceValue = document.getElementById('filter-price').value;
+            const badgeValue = document.getElementById('filter-badge').value;
 
             currentFiltered = propertiesData.filter(item => {
                 const matchType = typeValue === 'all' || item.type === typeValue;
-                const matchProvince = provinceValue === 'all' || item.location === provinceValue;
                 const matchDistrict = districtValue === 'all' || item.district === districtValue;
                 const matchPrice = priceValue === 'all' || item.priceRange === priceValue;
-                return matchType && matchProvince && matchDistrict && matchPrice;
+                const matchBadge = badgeValue === 'all' || item.badge === badgeValue;
+                return matchType && matchDistrict && matchPrice && matchBadge;
             });
 
             currentPage = 1;
@@ -2285,30 +2511,49 @@
             document.getElementById('properties-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // ======= POPUP CHI TIẾT NÂNG CAO =======
+        // ============================================================
+        // 8. MODAL - CHI TIẾT SẢN PHẨM (Gallery nhiều ảnh)
+        // ============================================================
         function openDetails(id) {
             const product = propertiesData.find(item => item.id === id);
             if (!product) return;
+            currentModalId = id;
 
-            const typeLabel = product.type === 'apartment' ? 'Căn hộ' : product.type === 'villa' ? 'Biệt thự' : 'Đất nền';
-            const provinceNames = { hanoi: 'Hà Nội', hcm: 'TP. Hồ Chí Minh', danang: 'Đà Nẵng', haiphong: 'Hải Phòng', 
-                                   cantho: 'Cần Thơ', binhduong: 'Bình Dương', dongnai: 'Đồng Nai', baria: 'Bà Rịa - Vũng Tàu',
-                                   quangninh: 'Quảng Ninh', nhatrang: 'Khánh Hòa' };
+            const typeLabel = product.type === 'apartment' ? 'Chung cư' : 'Nhà đất thổ cư';
 
-            document.getElementById('modal-img').src = product.img;
+            // Cập nhật thông tin cơ bản
             document.getElementById('modal-price').innerHTML = `${product.price} <span class="price-detail">/ căn</span>`;
             document.getElementById('modal-title').textContent = product.title;
-            
+
             const badgeEl = document.getElementById('modal-badge');
             badgeEl.textContent = product.badgeText;
             badgeEl.className = 'modal-badge ' + product.badge;
-            
-            document.getElementById('modal-location').innerHTML = `<i class="fas fa-map-pin" style="color: var(--secondary);"></i> ${product.district}, ${provinceNames[product.location] || product.location}`;
+
+            document.getElementById('modal-location').innerHTML =
+                `<i class="fas fa-map-pin" style="color: var(--secondary);"></i> ${product.locText}`;
             document.getElementById('modal-space').textContent = product.space;
             document.getElementById('modal-bed').textContent = product.bed;
             document.getElementById('modal-bath').textContent = product.bath;
             document.getElementById('modal-type').textContent = typeLabel;
             document.getElementById('modal-desc').textContent = product.desc;
+
+            // Cập nhật gallery ảnh
+            const images = product.images && product.images.length > 0 ? product.images.slice(0, 8) : [
+                'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'
+            ];
+            currentGalleryImages = images;
+            currentGalleryIndex = 0;
+
+            const slider = document.getElementById('gallerySlider');
+            slider.innerHTML = images.map(img => `<img src="${img}" alt="${product.title}" />`).join('');
+
+            // Tạo dots
+            const dotsContainer = document.getElementById('galleryDots');
+            dotsContainer.innerHTML = images.map((_, i) =>
+                `<button class="dot ${i === 0 ? 'active' : ''}" onclick="goToGalleryImage(${i})"></button>`
+            ).join('');
+
+            document.getElementById('galleryCounter').textContent = `1 / ${images.length}`;
 
             document.getElementById('property-modal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -2317,18 +2562,59 @@
         function closeDetails() {
             document.getElementById('property-modal').style.display = 'none';
             document.body.style.overflow = 'auto';
+            currentModalId = null;
         }
 
-        // Click outside modal to close
+        // Click outside to close
         document.getElementById('property-modal').addEventListener('click', function(e) {
             if (e.target === this) closeDetails();
         });
 
-        // ======= WISHLIST =======
+        // ESC to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('property-modal').style.display === 'flex') {
+                closeDetails();
+            }
+        });
+
+        // ============================================================
+        // 9. GALLERY ĐIỀU HƯỚNG
+        // ============================================================
+        function changeGalleryImage(direction) {
+            const total = currentGalleryImages.length;
+            if (total <= 1) return;
+            currentGalleryIndex = (currentGalleryIndex + direction + total) % total;
+            updateGalleryView();
+        }
+
+        function goToGalleryImage(index) {
+            if (index < 0 || index >= currentGalleryImages.length) return;
+            currentGalleryIndex = index;
+            updateGalleryView();
+        }
+
+        function updateGalleryView() {
+            const slider = document.getElementById('gallerySlider');
+            if (slider) {
+                slider.style.transform = `translateX(-${currentGalleryIndex * 100}%)`;
+            }
+
+            const dots = document.querySelectorAll('#galleryDots .dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentGalleryIndex);
+            });
+
+            document.getElementById('galleryCounter').textContent =
+                `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+        }
+
+        // ============================================================
+        // 10. WISHLIST (Yêu thích)
+        // ============================================================
         function toggleWishlist(id) {
             let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
             const product = propertiesData.find(item => item.id === id);
-            
+
             if (wishlist.includes(id)) {
                 wishlist = wishlist.filter(item => item !== id);
                 showToast('Đã xóa "' + product.title + '" khỏi yêu thích', 'info');
@@ -2340,56 +2626,62 @@
             displayProperties(currentFiltered, currentPage);
         }
 
-        // ======= FORM NHẬN BÁO GIÁ TRONG POPUP =======
+        // ============================================================
+        // 11. FORM NHẬN BÁO GIÁ
+        // ============================================================
         function handlePriceRequest(e) {
             e.preventDefault();
             const form = e.target;
             const name = form.querySelector('input[type="text"]').value;
-            const phone = form.querySelector('input[type="tel"]').value;
-            const project = document.getElementById('modal-title').textContent;
-            
-            // Hiển thị thông báo thành công với tên khách hàng
-            showToast('📋 Yêu cầu báo giá của ' + name + ' đã được gửi! Chuyên viên sẽ liên hệ trong 24h.', 'success');
-            
-            // Reset form
+            const product = propertiesData.find(item => item.id === currentModalId);
+
+            showToast('📋 ' + name + ' ơi, yêu cầu báo giá đã được gửi! Tôi sẽ liên hệ trong 5 phút.', 'success');
             form.reset();
-            
-            // Đóng modal sau 2 giây
+
             setTimeout(() => {
                 closeDetails();
             }, 2000);
         }
 
-        // ======= FORM LIÊN HỆ =======
+        // ============================================================
+        // 12. CONTACT FORM
+        // ============================================================
         function handleContactForm(e) {
             e.preventDefault();
             const name = e.target.querySelector('input[type="text"]').value;
-            showToast('Cảm ơn ' + name + '! Chúng tôi sẽ gửi tài liệu trong 24h tới.', 'success');
+            showToast('Cảm ơn ' + name + '! Tôi sẽ liên hệ lại trong 5 phút.', 'success');
             e.target.reset();
         }
 
-        // ======= SCROLL TO CONTACT =======
+        // ============================================================
+        // 13. SCROLL TO CONTACT
+        // ============================================================
         function scrollToContact() {
             document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // ======= TOAST =======
+        // ============================================================
+        // 14. TOAST NOTIFICATION
+        // ============================================================
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             const icon = toast.querySelector('.toast-icon');
             const content = toast.querySelector('.toast-content p');
 
             icon.className = 'toast-icon ' + type;
-            if (type === 'success') {
-                icon.innerHTML = '<i class="fas fa-check"></i>';
-                toast.querySelector('h4').textContent = '✅ Thành công!';
-            } else if (type === 'info') {
-                icon.innerHTML = '<i class="fas fa-info"></i>';
-                toast.querySelector('h4').textContent = '📌 Thông báo';
-            } else {
-                icon.innerHTML = '<i class="fas fa-exclamation"></i>';
-                toast.querySelector('h4').textContent = '⚠️ Cảnh báo';
-            }
+            const icons = {
+                success: '<i class="fas fa-check"></i>',
+                info: '<i class="fas fa-info"></i>',
+                warning: '<i class="fas fa-exclamation"></i>'
+            };
+            icon.innerHTML = icons[type] || icons.success;
+
+            const titles = {
+                success: '✅ Thành công!',
+                info: '📌 Thông báo',
+                warning: '⚠️ Cảnh báo'
+            };
+            toast.querySelector('h4').textContent = titles[type] || titles.success;
 
             content.textContent = message;
             toast.classList.add('show');
@@ -2400,30 +2692,44 @@
             }, 4000);
         }
 
-        // ======= MOBILE MENU =======
+        // ============================================================
+        // 15. MOBILE MENU
+        // ============================================================
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('open');
         }
 
-        // ======= KEYBOARD SHORTCUTS =======
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                if (document.getElementById('property-modal').style.display === 'flex') {
-                    closeDetails();
-                }
-            }
-        });
-
-        // ======= INIT =======
+        // ============================================================
+        // 16. INIT
+        // ============================================================
         window.onload = function() {
-            updateDistricts();
+            // Đảm bảo mỗi sản phẩm có ít nhất 1 ảnh
+            propertiesData.forEach(item => {
+                if (!item.images || item.images.length === 0) {
+                    item.images = ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'];
+                }
+            });
+
             currentFiltered = [...propertiesData];
             displayProperties(currentFiltered, 1);
-            
+
+            // Khôi phục wishlist
             const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
             if (wishlist.length > 0) {
                 displayProperties(currentFiltered, currentPage);
             }
+
+            // Tự động đóng menu khi click ra ngoài
+            document.addEventListener('click', function(e) {
+                const nav = document.getElementById('navLinks');
+                const toggle = document.querySelector('.menu-toggle');
+                if (nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)) {
+                    nav.classList.remove('open');
+                }
+            });
+
+            // Preload ảnh cho slider
+            console.log('Trần Tuấn BDS - Sẵn sàng!');
         };
     </script>
 </body>
